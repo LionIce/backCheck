@@ -1,0 +1,59 @@
+.cerification-content{
+  background: #fff;
+  margin-top: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 250rpx;
+}
+
+.button{
+  margin-top: 30rpx;
+  border-radius : 12rpx;
+  background-color: #e3b96f;
+  color: #fff;
+  width: 80%
+}
+
+.view-show{
+   height: 100vh;
+}
+
+.view-hidden{
+   height: 0vh;
+}
+
+.icon-success{
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10px; 
+}
+
+.text-view-content{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.text-titile{
+  width: 40%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.text-org-name{
+  width: 60%;
+  padding-left: 15rpx;
+}
+
+.cerification-shengji{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 25rpx; 
+}

@@ -1,0 +1,68 @@
+<import src="../../components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+<form bindsubmit="submitForm">
+<view style="padding:20px">
+    <view class="basis-view">
+        <image class="icon-image" src="../../assets/images/icon_prompt.png"></image>
+        <text class="text-size-14 text-gary">基础信息</text>
+    </view>
+    <block wx:for="{{tplList[current].inputs}}"  wx:for-item="input">
+      <view class='input-view'>
+      <input name="{{input.ioCode}}" placeholder="请输入{{input.ioName}}"  placeholder-style="color: #8994A4;font-size: 14px;" />
+      <text wx:if="{{input.id != '1170518160542137000'}}" class='text-red'>*</text>
+      </view>
+    </block>
+   
+    <view class="basis-view" style='padding-top:25rpx;padding-bottom:25rpx'>
+        <image class="icon-image" src="../../assets/images/icon_prompt.png"></image>
+        <text class="text-size-14 text-gary">报告选择</text>
+    </view>
+    <swiper   class="swiper" indicator-dots="true" interval="5000" current="{{current}}" duration="1000" bindchange="listenSwiper">
+        <block wx:for="{{tplList}}" wx:for-index="index" wx:for-item="item">
+            <swiper-item>
+                <view class="report-item">
+                    <view class='tplName-view'>
+                        <text class="tplName-text">{{item.tplName}}</text>
+                        <text class="chargeAmt-text">￥{{item.chargeAmt}}</text>
+                    </view>
+                    <view style='margin-left:10rpx;margin-reight:10rpx'>
+                        <block
+                            wx:if="{{item.displayMode != null && item.displayMode != '' && item.displayMode == '1'}}">
+                            <block
+                                wx:if="{{item.childrenTemplate == null || item.childrenTemplate == ''}}">
+                                <block wx:for="{{item.items}}" wx:for-item="itemtext">
+                                    <text class='margin-left'>{{itemtext}}</text>
+                                </block>
+                            </block>
+                            <block wx:else>
+                                <block><text class='margin-left'>{{item.childrenTemplate}}+</text></block>
+                                <block wx:for="{{item.items}}" wx:for-item="itemtext">
+                                    <text class='margin-left'>{{itemtext}}</text>
+                                </block>
+                            </block>
+                        </block>
+                        <block wx:else>
+                            <block
+                                wx:if="{{item.childrenTemplate == null || item.childrenTemplate == ''}}">
+                                <block wx:for="{{item.items}}" wx:for-item="itemtext">
+                                    <text class='margin-left'>{{itemtext.itemName}}</text>
+                                </block>
+                            </block>
+                            <block wx:else>
+                                <block><text class='margin-left'>{{item.childrenTemplate}}+</text></block>
+                                <block wx:for="{{item.items}}" wx:for-item="itemtext">
+                                    <text class='margin-left'>{{itemtext.itemName}}</text>
+                                </block>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class='button-view'>
+        <button class="login-button" formType="submit">下一步</button>
+    </view>
+</view>
+</form>

@@ -1,0 +1,11 @@
+  <view>
+    <view class='acc-money'>
+        <view class='titile-view'>
+          <view class='text-padding text-white text-size-14'>账户余额(元)</view>
+          <view class=' text-padding text-white text-size-14' bindtap='onRechargeList'>充值记录</view>
+        </view>
+        <view class="text-money">￥{{ c1 }}</view>
+    </view>
+
+    <button class='button' bindtap='recharge'>充值</button>
+  </view>

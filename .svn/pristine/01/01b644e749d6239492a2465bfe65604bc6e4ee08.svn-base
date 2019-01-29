@@ -1,0 +1,61 @@
+<view wx:if ="{{certification.authStatus == 0}}" class="{{certification.authStatus == 0 ? 'view-show':'view-hidden'}}">
+    <view class='cerification-content'>
+        <text class='text-size-14 text-gary'> 尚未进行实名认证</text>
+        <text class='text-size-14 text-gary'> 请提交信息完成实名认证</text>
+    </view>
+
+    <button class='button' bindtap='personal'>个人认证</button>
+
+    <button class='button' bindtap='enterprise'>企业认证</button>
+</view>
+
+
+<view wx:if ="{{certification.authStatus == 2}}" class="{{certification.authStatus == 2 ? 'view-show':'view-hidden'}}">
+    <view class='cerification-content'>
+        <image class='icon-success' src='../../assets/images/icon_shape.png'></image>
+        <text class='text-size-14 text-gary'>您已通过实名认证</text>
+    </view>
+     <view class='cerification-content' wx:if="{{certification.authType == 2}}">
+      <text class='text-size-16 text-gary'>实名认证信息</text>
+        <view class='text-view-content'>
+          <view  class='text-size-14 text-gary text-titile'>企业名称:</view>
+          <view class='text-size-14 text-gary text-org-name'>{{certification.orgName}}</view>
+        </view>
+       <view class='text-view-content'>
+          <view  class='text-size-14 text-gary text-titile'>企业地址:</view>
+          <view class='text-size-14 text-gary text-org-name'>{{certification.orgBusiAddr}}</view>
+        </view>
+    </view>
+
+    <view class='cerification-content' wx:if="{{certification.authType == 1}}">
+      <text class='text-size-16 text-gary'>实名认证信息</text>
+      <view class='text-view-content'>
+          <view  class='text-size-14 text-gary text-titile'>真实姓名:</view>
+          <view class='text-size-14 text-gary text-org-name'>{{certification.name}}</view>
+        </view>
+
+        <view class='text-view-content'>
+          <view  class='text-size-14 text-gary text-titile'>身份证号:</view>
+          <view class='text-size-14 text-gary text-org-name'>{{certification.idNo}}</view>
+        </view>
+    </view>
+
+    <view bindtap='enterprise' class='cerification-shengji' wx:if="{{certification.authType == 1}}">
+      <text class='text-size-14'>升级为</text> 
+      <text class='text-size-14 text-yellow'>企业认证</text>
+      <text class='text-size-14'>,尊享更多权益</text>
+    </view>
+</view>
+
+
+
+<view wx:if ="{{certification.authStatus == 3}}"class="{{certification.authStatus == 3 ? 'view-show':'view-hidden'}}">
+     <view class='cerification-content'>
+        <text class='text-size-14 text-gary'> 实名认证审核失败</text>
+        <text class='text-size-14 text-gary'> 失败原因：{{certification.failureReason}}</text>
+    </view>
+
+    <button class='button' bindtap='personal'>个人认证</button>
+
+    <button class='button' bindtap='enterprise'>企业认证</button>
+</view>

@@ -1,0 +1,66 @@
+.input-recharge-text{
+  background: #fff;
+  border-radius: 12rpx;
+  margin: 35rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-recharge-view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #969696;
+  height: 110rpx;
+}
+
+.text-recharge{
+  font-size: 14px;
+  color: #2b2b2b;
+  margin: 25rpx;
+}
+
+.money-text-check{
+  padding: 25rpx;
+  border-radius: 8rpx;
+  background: #435879;
+  border: 1px solid #435879;
+  color: #fff;
+  flex: 1;
+  margin-left: 15rpx;
+  text-align:center;
+  font-size: 14px;
+}
+
+
+.money-text{
+  padding: 25rpx;
+  border-radius: 8rpx;
+  color: #2b2b2b;
+  border: 1px solid #435879;
+  flex: 1;
+  margin-left: 15rpx;
+  text-align:center;
+  font-size: 14px;
+}
+
+
+.money-view{
+  display: flex;
+  flex-direction: row;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  padding-bottom: 25rpx;
+}
+
+.button{
+  margin-top: 50rpx;
+  border-radius : 12rpx;
+  background-color: #e3b96f;
+  color: #fff;
+  margin-bottom: 80rpx;
+  width: 80%
+}

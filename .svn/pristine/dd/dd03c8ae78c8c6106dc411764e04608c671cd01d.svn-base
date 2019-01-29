@@ -1,0 +1,68 @@
+<import src="../../components/dialog/dialog.wxml"/>
+
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
+<view style="padding-bottom:25rpx;">
+  <view class="view-content bg-config " bindload="imageLoad">
+
+     <view class="item-report">
+           <view class="item-menu" bindtap="quickselect">
+            <view class="view-content">
+                <image  src='../../assets/images/icon_kaui_su_bei_diao.png' class='item-menu-icon' mode='aspectFit'/>
+            </view>
+            <view class="view-content text-gary1 text-size-12">快速背调</view>
+          </view>
+          <view style='width:3rpx;height:80rpx;background-color:#D0D0D0'></view> 
+          <view class='item-menu' bindtap="sampleReport">
+            <view class="view-content">
+                <image  src='../../assets/images/icon_yang_li_bao_gao.png' class='item-menu-icon' mode='aspectFit'/>
+            </view>
+            <view class="view-content text-gary1 text-size-12">样例报告</view>
+          </view>
+          <view style='width:3rpx;height:80rpx;background-color:#D0D0D0'></view>
+          <view  class="item-menu " bindtap="recharge">
+            <view class="view-content">
+                <image  src='../../assets/images/icon_zai_xian_chong_zhi.png' class='item-menu-icon' mode='aspectFit'/>
+            </view>
+            <view class="view-content text-gary1 text-size-12">在线充值</view>
+          </view>
+     </view>
+  </view>
+  <view class="model-title">
+    <view class="model-title-icon"></view>
+    <text class="text-gary text-size-12" style='margin-left:10rpx'>版本分类</text>
+  </view>
+  <block wx:for="{{tplList}}" wx:for-index="index" wx:for-item="item">
+    <view class=" view-content model-item-image"  bindtap='onClickItem' data-id="{{index}}">
+        <view class="model-item">
+          <text class="text-yellow text-size-14 model-item-text" >{{item.tplName}}</text>
+          <view class="model-item-content">
+             <text class='text-white  text-size-12'  style='margin-right:20rpx'>
+              <block wx:if="{{item.displayMode != null && item.displayMode != '' && item.displayMode == '1'}}">
+                  <block wx:if="{{item.childrenTemplate == null || item.childrenTemplate == ''}}">
+                      <block  wx:for="{{item.items}}" wx:for-item="itemtext">{{itemtext}}\r\t\r\t\r\t\r\t</block>
+                  </block>
+                  <block wx:else>
+                        <block>{{item.childrenTemplate}}+\r\t\r\t\r\t\r\t</block>
+                        <block  wx:for="{{item.items}}" wx:for-item="itemtext">{{itemtext}}\r\t\r\t\r\t\r\t</block>
+                  </block>
+              </block>
+              <block wx:else>
+                 <block wx:if="{{item.childrenTemplate == null || item.childrenTemplate == ''}}">
+                      <block  wx:for="{{item.items}}" wx:for-item="itemtext">{{itemtext.itemName}}\r\t\r\t\r\t\r\t</block>
+                  </block>
+                  <block wx:else>
+                        <block>{{item.childrenTemplate}}+\r\t\r\t\r\t\r\t</block>
+                        <block  wx:for="{{item.items}}" wx:for-item="itemtext">{{itemtext.itemName}}\r\t\r\t\r\t\r\t</block>
+                  </block>
+              </block>  
+             </text>
+          </view>
+        </view>
+    </view>  
+  </block>
+ 
+</view>
+
+
+

@@ -1,0 +1,37 @@
+<import src="../../components/toptips/toptips.wxml"/>
+
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+<view class='quick-view'>
+  <form bindsubmit="submitForm">
+        <view class="inputView">
+            <image class="icon-input" src="../../assets/images/icon_regist_phone.png"></image>
+            <input name="tel" value="{{tel}}" type="number" placeholder="请输入手机号码" maxlength="11" placeholder-style="color: #DADADA;font-size: 14px;"  bindinput="userNameTel" />
+        </view>
+        <view class="inputView">
+            <image class="icon-input" src="../../assets/images/icon_regist_pwd.png"></image>
+            <input name="password" value="{{password}}" password="ture" placeholder="请输入登录密码" maxlength="21" placeholder-style="color: #DADADA;font-size: 14px;"/>
+        </view>   
+        <view class="inputview-code">
+           <view class="inputView">
+              <image class="icon-input" src="../../assets/images/icon_code.png"></image>
+              <input name="code"  value="{{code}}" type="number"  maxlength="6" placeholder="请输入验证码" placeholder-style="color: #DADADA;font-size: 14px;" />
+            </view>
+            <view  class=" text-yellow text-size-16 text-code" bindtap="vcode" >{{ c2 || '获取验证码' }}</view>
+        </view>
+        <view class="inputView">
+            <image class="icon-input" src="../../assets/images/icon_regist_phone.png"></image>
+            <input name="inviteCode" value="{{inviteCode}}" type="number" placeholder="邀请码（选填）" maxlength="11" placeholder-style="color: #DADADA;font-size: 14px;"/>
+        </view>
+    <checkbox-group class="login-view-text" bindchange="checkboxChange">
+      <label class="checkbox" >
+        <checkbox value='true' checked="true" color='#435879'/>
+      </label>
+      <view bindtap='agreement'>
+          <text class='text-size-16' style='color:#2b2b2b'>我已阅读并同意</text><text class='text-size-16' style='color:#D3b170'>《芝麻背调服务协议》</text>
+      </view>
+    </checkbox-group>
+    <button class="login-button" formType="submit" >注册</button>
+  </form>
+</view>
+

@@ -1,0 +1,12 @@
+<view class="authorized-view">
+
+    <view class="authorized-view" style=' background: #fff;margin-top: 20rpx'>
+          <image src='../../assets/images/icon_shape.png' mode='aspectFit'></image>
+          <text class='success-text text-gary text-size-16'>提交成功</text>
+          <text wx:if="{{credit == 1}}" class='success-context text-size-14'>您的背调申请已经提交成功，候选人将受到短信及相关指导完成授权操作。</text>
+          <text wx:if="{{credit == 2}}" class='success-context text-size-14'>您的背调报告已生成。</text>
+    </view>
+
+<button class="login-button" bindtap='confirm' >完成</button>
+
+</view>

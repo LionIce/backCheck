@@ -1,0 +1,27 @@
+<import src="../../components/toptips/toptips.wxml"/>
+
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+<view class='container bg-view' >
+    <view class="queick-view" bindtap="quickLogin">
+        <text class="queick-text text-yellow text-size-16">快捷登录</text>
+    </view>
+    <image class="image-logo" src="../../assets/images/pic_logo.png" ></image> 
+    <view class="app-name userinfo-name text-white">芝麻背调</view>
+
+<form bindsubmit="submitForm">
+        <view class="inputView">
+          <image class="icon-input" src="../../assets/images/icon_phone.png"></image>
+          <input name="tel" value="{{tel}}" type="number" placeholder="请输入手机号码" maxlength="11" placeholder-style="color: #8994A4;font-size: 14px;" />
+        </view>
+          <view class="inputView">
+            <image class="icon-input" src="../../assets/images/icon_password.png"></image>
+            <input name="password"  value="{{password}}" password="true" maxlength="20" placeholder="请输入登录密码" placeholder-style="color: #8994A4;font-size: 14px;" />
+          </view>
+          <view class="login-view-text">
+              <view class="login-view-text-item text-yellow text-size-16" bindtap="register">立即注册</view>
+              <view class="login-view-text-item text-yellow text-size-16" bindtap="forgetpwd">找回密码</view>
+          </view> 
+          <button class="login-button" formType="submit" >登录</button>
+</form>
+</view>

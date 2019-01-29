@@ -1,0 +1,16 @@
+.success-view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx;
+  margin-top:35rpx;
+  background: #fff; 
+}
+
+.button{
+  margin-top: 30rpx;
+  border-radius : 12rpx;
+  background-color: #e3b96f;
+  color: #fff;
+  width: 80%
+}

@@ -1,0 +1,1312 @@
+<view>
+    <view class="report-input">
+        <view class='report-input-item'>
+            <text class='text-white'>付*</text>
+        </view>
+        <view class='report-input-item'>
+            <text class='text-white'>130124******1871</text>
+        </view>
+        <view class='report-input-item'>
+            <text class='text-white'>176******123</text>
+            <text class='text-white'>2017-03-09 \r\t 10:00:16</text>
+        </view>
+    </view>
+  
+<!-- 基本信息 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.b ? 'kind-list__item-hd_show' : ''}}" data-id='b'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/jibenxinxi.png'></image>
+            <text>基本信息</text>
+        </view>
+        <image class="icon-up {{ arrow.b ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.b ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.b  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>姓名</view>
+                <view class='conCol'>付*</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>身份证号</view>
+                <view class='conCol'>130124******1871</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>手机号</view>
+                <view class='conCol'>176******123</view>
+            </view>
+        </view>
+    </view>
+
+ <!-- 基本信息验证 -->
+     <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.a ? 'kind-list__item-hd_show' : ''}}" data-id='a'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/jiaoyan.png'></image>
+            <text>基本信息验证</text>
+        </view>
+        <image class="icon-up {{ arrow.a ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.a ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.a  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>身份证实名核验</view>
+                <view class='conCol'>认证通过</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>运营商验证</view>
+                <view class='conCol'>认证通过</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>身份验证返照</view>
+                <image class='conCol' src='https://m.zmbeidiao.com/img/sfz.png'></image>  
+            </view>
+        </view>
+    </view>
+
+    <!-- 户籍信息 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.c ? 'kind-list__item-hd_show' : ''}}" data-id='c'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/huji.png'></image>
+            <text>户籍信息</text>
+        </view>
+        <image class="icon-up {{ arrow.c ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.c ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.c ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>地址</view>
+                <view class='conCol'>河北省廊坊市香河县</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>民族</view>
+                <view class='conCol'>汉族</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>性别</view>
+                <view class='conCol'>女</view>
+            </view>
+              <view class='report-context'>
+                <view class='tabCol'>年龄</view>
+                <view class='conCol'>22</view>
+            </view>
+              <view class='report-context'>
+                <view class='tabCol'>出身地</view>
+                <view class='conCol'>河北省廊坊市香河县</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>婚姻状态</view>
+                <view class='conCol'>未婚</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>籍贯</view>
+                <view class='conCol'>河北省廊坊市香河县</view>
+            </view>
+        </view>
+    </view>
+
+   <!--  学历信息  -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.e ? 'kind-list__item-hd_show' : ''}}" data-id='e'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/degree.png'></image>
+            <text>学历信息</text>
+        </view>
+        <image class="icon-up {{ arrow.e ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.e ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.e  ? '' : 'weui-cells_show'}}">
+           <view class='trigon-view'>
+                <view class='trigon text-size-14'>第1条</view>
+           </view> 
+            <view class='report-context'>
+                <view class='tabCol'>毕业结论</view>
+                <view class='conCol'>毕业</view>
+            </view>
+           <view class='report-context'>
+                <view class='tabCol'>最高学历</view>
+                <view class='conCol'>本科</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>专业</view>
+                <view class='conCol'>会计</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>毕业时间</view>
+                <view class='conCol'>2014</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>毕业学校</view>
+                <view class='conCol'>苏州大学</view>
+            </view>
+
+            <view class='report-context'>
+                <view class='tabCol'>学历类别</view>
+                <view class='conCol'>普通</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>入学时间</view>
+                <view class='conCol'>2010</view>
+            </view>
+        </view>
+
+        <view class='trigon-view'>
+                <view class='trigon text-size-14'>第2条</view>
+        </view> 
+
+          <view class='report-context'>
+                <view class='tabCol'>毕业结论</view>
+                <view class='conCol'>毕业</view>
+          </view>
+           <view class='report-context'>
+                <view class='tabCol'>最高学历</view>
+                <view class='conCol'>硕士</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>专业</view>
+                <view class='conCol'>工商管理</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>毕业时间</view>
+                <view class='conCol'>2017</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>毕业学校</view>
+                <view class='conCol'>复旦大学</view>
+            </view>
+
+            <view class='report-context'>
+                <view class='tabCol'>学历类别</view>
+                <view class='conCol'>普通</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>入学时间</view>
+                <view class='conCol'>2014</view>
+            </view>
+    </view>
+
+<!-- 职业资格 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.f ? 'kind-list__item-hd_show' : ''}}" data-id='f'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/zhiyezhige.png'></image>
+            <text>职业资格</text>
+        </view>
+        <image class="icon-up {{ arrow.f ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.f ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.f  ? '' : 'weui-cells_show'}}">
+           <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>颁证日期</view>
+                <view class='conCol'>2015-07-01</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>证书级别</view>
+                <view class='conCol'>高级/三级</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>上报单位</view>
+                <view class='conCol'>上海市职业技能鉴定指导中心</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>证书编号</view>
+                <view class='conCol'>200300241007103</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>职业名称</view>
+                <view class='conCol'>劳动关系协调员</view>
+            </view>
+
+              <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>颁证日期</view>
+                <view class='conCol'>2003-12-31</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>证书级别</view>
+                <view class='conCol'>四级</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>上报单位</view>
+                <view class='conCol'>福建省职业技能鉴定指导中心</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>证书编号</view>
+                <view class='conCol'>200300241007103</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>职业名称</view>
+                <view class='conCol'>网络管理</view>
+            </view>
+        </view>
+    </view>
+
+  <!-- 基本信息 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.g ? 'kind-list__item-hd_show' : ''}}" data-id='g'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/jiashizheng.png'></image>
+            <text> 驾驶证核验 </text>
+        </view>
+        <image class="icon-up {{ arrow.g ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.g ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.g  ? '' : 'weui-cells_show'}}">
+             <view class='report-context'>
+                <view class='tabCol'>比对结果</view>
+                <view class='conCol'>驾驶证存在；姓名一致</view>
+            </view>
+        </view>
+    </view>
+
+  <!-- 健康证 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.h ? 'kind-list__item-hd_show' : ''}}" data-id='h'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/icon_health.png'></image>
+            <text> 健康证 </text>
+        </view>
+        <image class="icon-up {{ arrow.h ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.h ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.h  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>证号</view>
+                <view class='conCol'>沪浦1234567890</view>
+            </view>
+           <view class='report-context'>
+                <view class='tabCol'>工种代码</view>
+                <view class='conCol'>A</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>姓名</view>
+                <view class='conCol'>付*</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>性别</view>
+                <view class='conCol'>女</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>身份证号码</view>
+                <view class='conCol'>310103199008******</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>发证日期 </view>
+                <view class='conCol'>2012-09-13</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>健康检查单位</view>
+                <view class='conCol'>上海市XX区XX医院</view>
+            </view>
+        </view>
+    </view>
+
+<!-- 手机在网时长 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.i ? 'kind-list__item-hd_show' : ''}}" data-id='i'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/mobile_network_state.png'></image>
+            <text>手机在网时长</text>
+        </view>
+        <image class="icon-up {{ arrow.i ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.i ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.i  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>在网时长</view>
+                <view class='conCol'>24个月以上</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 诉讼摘要接口信息 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.l ? 'kind-list__item-hd_show' : ''}}" data-id='l'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/fayuanpaju.png'></image>
+            <text>法院判决</text>
+        </view>
+        <image class="icon-up {{ arrow.l ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.l ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.l  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>判决时间</view>
+                <view class='conCol'>2013年10月11日</view>
+            </view>
+           
+            <view class='report-context'>
+                <view class='tabCol'>判决信息</view>
+                <view class='conCol'>被告***于本判决生效后十日内偿还欠原告的借款208000元，利息33696元，合计241696元。</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>判决法院</view>
+                <view class='conCol'>宁洱哈尼族彝族自治县人民法院</view>
+            </view>
+        </view>
+    </view>
+<!-- 法院黑名单 -->
+     <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.l ? 'kind-list__item-hd_show' : ''}}" data-id='j'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/fayuanhmd.png'></image>
+            <text>法院黑名单</text>
+        </view>
+        <image class="icon-up {{ arrow.j ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.j ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.j  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>执行法院</view>
+                <view class='conCol'>灌云县人民法院</view>
+            </view>
+           
+            <view class='report-context'>
+                <view class='tabCol'>案号</view>
+                <view class='conCol'>(2014)灌执字第00449号</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>执行单位</view>
+                <view class='conCol'>江苏省灌云县人民法院</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>立案时间</view>
+                <view class='conCol'>2014年04月02日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>判决信息</view>
+                <view class='conCol'>220000.00 元</view>
+            </view>
+        </view>
+    </view>
+
+ <!-- 法院失信执行黑名单 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.k ? 'kind-list__item-hd_show' : ''}}" data-id='k'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/fayuansxhmd.png'></image>
+            <text>法院失信执行黑名单</text>
+        </view>
+        <image class="icon-up {{ arrow.k ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.k ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.k  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>发布时间</view>
+                <view class='conCol'>2015年03月14日</view>
+            </view>
+           <view class='report-context'>
+                <view class='tabCol'>立案时间</view>
+                <view class='conCol'>2014年04月02日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>文号</view>
+                <view class='conCol'>(2013)灌商初字第0838号</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>执行法院</view>
+                <view class='conCol'>江苏省灌云县人民法院</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>具体情形</view>
+                <view class='conCol'>2015年03月14日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>发布时间</view>
+                <view class='conCol'>全部未履行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>案号</view>
+                <view class='conCol'>(2014)灌执字第00449号</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>执行单位</view>
+                <view class='conCol'>江苏省灌云县人民法院</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>义务</view>
+                <view class='conCol'>220000.00 元</view>
+            </view>
+        </view>
+    </view>
+
+  <!-- 法院执行黑名单 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.a2 ? 'kind-list__item-hd_show' : ''}}" data-id='a2'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/fayuanzxhmd.png'></image>
+            <text>法院执行黑名单</text>
+        </view>
+        <image class="icon-up {{ arrow.a2 ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.a2 ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.a2  ? '' : 'weui-cells_show'}}">
+             <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>执行法院</view>
+                <view class='conCol'>灌云县人民法院</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>案号</view>
+                <view class='conCol'>(2017)苏0723执608号</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>立案时间</view>
+                <view class='conCol'>2017年03月02日</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>执行标的</view>
+                <view class='conCol'>20000</view>
+            </view>
+        </view>
+    </view>
+
+ <!-- 法院结案黑名单 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.m ? 'kind-list__item-hd_show' : ''}}" data-id='m'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/fayuanjahmd.png'></image>
+            <text>法院结案黑名单</text>
+        </view>
+        <image class="icon-up {{ arrow.m ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.m ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.m  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>执行法院</view>
+                <view class='conCol'>灌云县人民法院</view>
+            </view>
+           <view class='report-context'>
+                <view class='tabCol'>案号</view>
+                <view class='conCol'>(2017)内0821执271号</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>终本时期</view>
+                <view class='conCol'>2017年04月28日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>立案时间</view>
+                <view class='conCol'>2017年01月19日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>执行标的</view>
+                <view class='conCol'>200000</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>未履行金额</view>
+                <view class='conCol'>200000.00元</view>
+            </view>
+        </view>
+    </view>
+
+  <!-- 银行历史负债 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.b ? 'kind-list__item-hd_show' : ''}}" data-id='n'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/yinhanglsfz.png'></image>
+            <text>银行历史负债</text>
+        </view>
+        <image class="icon-up {{ arrow.n ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.n ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.n  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>立案时间</view>
+                <view class='conCol'>2013年10月11日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>返回信息</view>
+                <view class='conCol'>部分未履行</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>失信原因 </view>
+                <view class='conCol'>其它规避执行,违反财产报告制度</view>
+            </view>
+        </view>
+    </view>
+
+  <!-- 小贷负债 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.b ? 'kind-list__item-hd_show' : ''}}" data-id='o'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/xiaodaifz.png'></image>
+            <text>小贷负债</text>
+        </view>
+        <image class="icon-up {{ arrow.o ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.o ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.o  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>合同日期</view>
+                <view class='conCol'>2014年8月21日</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>公司代码</view>
+                <view class='conCol'>P2P*****8722</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>借款金额</view>
+                <view class='conCol'>2~4万元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>借款期数</view>
+                <view class='conCol'>24个月</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>还款状态</view>
+                <view class='conCol'>逾期一个月</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>借款类型</view>
+                <view class='conCol'>个人信贷</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>借款状态</view>
+                <view class='conCol'>批贷已放款</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>欠款金额</view>
+                <view class='conCol'>20000.00 元</view>
+            </view>
+        </view>
+    </view>
+
+ <!-- 网贷负债 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.p ? 'kind-list__item-hd_show' : ''}}" data-id='p'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/wangdaifuzai.png'></image>
+            <text>网贷负债</text>
+        </view>
+        <image class="icon-up {{ arrow.p ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.p ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.p  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>已还金额</view>
+                <view class='conCol'>1063.01</view>
+            </view>
+           <view class='report-context'>
+                <view class='tabCol'>逾期总罚息(元)</view>
+                <view class='conCol'>0.00</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>借款日期</view>
+                <view class='conCol'>2013-10-11</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期金额(元)</view>
+                <view class='conCol'>0.00</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>未还金额(元)</view>
+                <view class='conCol'>999.89</view>
+            </view>
+            
+        </view>
+    </view>
+
+    <!-- 信贷整合 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.shean ? 'kind-list__item-hd_show' : ''}}" data-id='shean'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/shean.png'></image>
+            <text>信贷整合</text>
+        </view>
+        <image class="icon-up {{ arrow.shean ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.shean ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.shean  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                 <text class='text-gary1'>逾期平台详情查询</text>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>EMAY_103333</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期数量</view>
+                <view class='conCol'>284</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000287</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期数量</view>
+                <view class='conCol'>12</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第3条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000277</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期数量</view>
+                <view class='conCol'>60</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>逾期金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+
+            <view class='report-context'>
+                 <text class='text-gary1'>信贷平台注册详情</text>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台类型</view>
+                <view class='conCol'>银行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000036</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>注册时间</view>
+                <view class='conCol'>2016/3/14 0:00:00</view>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台类型</view>
+                <view class='conCol'>非银行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>EMAY_100409</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>注册时间</view>
+                <view class='conCol'>2017/4/17 0:00:00</view>
+            </view>
+
+
+            <view class='report-context'>
+                 <text class='text-gary1'>欠款查询</text>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>EMR013</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>欠款金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+           
+
+             <view class='report-context'>
+                 <text class='text-gary1'>贷款申请详情</text>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000035</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>申请时间</view>
+                <view class='conCol'>2016/3/14 0:00:00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>申请金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>申请结果</view>
+                <view class='conCol'>是</view>
+            </view>
+             <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000036</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>申请时间</view>
+                <view class='conCol'>2016/3/14 0:00:00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>申请金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>申请结果</view>
+                <view class='conCol'>是</view>
+            </view>
+
+
+            <view class='report-context'>
+                 <text class='text-gary1'>贷款放款详情</text>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台类型</view>
+                <view class='conCol'>银行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000036</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>放款时间</view>
+                <view class='conCol'>2016/3/14 0:00:00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>放款金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+             <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台类型</view>
+                <view class='conCol'>银行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000038</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>放款时间</view>
+                <view class='conCol'>2016/3/14 0:00:00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>放款金额区间</view>
+                <view class='conCol'>0W～0.2W</view>
+            </view>
+
+            <view class='report-context'>
+                 <text class='text-gary1'>贷款驳回详情</text>
+            </view>
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台类型</view>
+                <view class='conCol'>银行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>PT1000036</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>驳回时间</view>
+                <view class='conCol'>2016/3/14 0:00:00</view>
+            </view>
+             <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>平台类型</view>
+                <view class='conCol'>非银行</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>平台代码</view>
+                <view class='conCol'>EMAY_100409</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>驳回时间</view>
+                <view class='conCol'>2017/4/17 0:00:00</view>
+            </view>
+        </view>
+    </view>
+
+
+<!-- 在外担任法人 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.q ? 'kind-list__item-hd_show' : ''}}" data-id='q'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/faren.png'></image>
+            <text>在外担任法人</text>
+        </view>
+        <image class="icon-up {{ arrow.q ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.q ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.q  ? '' : 'weui-cells_show'}}">
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>法人名称</view>
+                <view class='conCol'>傅*</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>企业（机构）名称</view>
+                <view class='conCol'>******信息科技有限公司</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册号</view>
+                <view class='conCol'>**********3351</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）性质</view>
+                <view class='conCol'>有限责任公司(自然人投资或控股)</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本（万元）</view>
+                <view class='conCol'>1500.0000.00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本币种</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）状态</view>
+                <view class='conCol'>在营（开业）</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>认缴出资币种</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>任职（投资）企业总数量</view>
+                <view class='conCol'>1</view>
+            </view>
+        </view>
+    </view>
+
+   <!-- 在外担任股东 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.r ? 'kind-list__item-hd_show' : ''}}" data-id='r'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/gudong.png'></image>
+            <text>在外担任股东</text>
+        </view>
+        <image class="icon-up {{ arrow.r ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.r ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.r  ? '' : 'weui-cells_show'}}">
+             <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>企业（机构）名称</view>
+                <view class='conCol'>******信息科技有限公司</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册号</view>
+                <view class='conCol'>**********3351</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）性质</view>
+                <view class='conCol'>有限责任公司(自然人投资或控股)</view>
+            </view>
+
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本（万元）</view>
+                <view class='conCol'>500.00000.00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本币种</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）状态</view>
+                <view class='conCol'>注销</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>比认缴出资币种对结果</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>任职（投资）企业总数量</view>
+                <view class='conCol'>2</view>
+            </view>
+
+            <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第2条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>企业（机构）名称</view>
+                <view class='conCol'>******信息科技有限公司</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册号</view>
+                <view class='conCol'>**********3351</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）性质</view>
+                <view class='conCol'>有限责任公司(自然人投资或控股)</view>
+            </view>
+
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本（万元）</view>
+                <view class='conCol'>1500.00000.00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本币种</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）状态</view>
+                <view class='conCol'>注销</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>比认缴出资币种对结果</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>任职（投资）企业总数量</view>
+                <view class='conCol'>2</view>
+            </view>
+        </view>
+    </view>
+
+   <!-- 在外担任高管 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.s ? 'kind-list__item-hd_show' : ''}}" data-id='s'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/zaiwaidrgg.png'></image>
+            <text>在外担任高管</text>
+        </view>
+        <image class="icon-up {{ arrow.s ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.s ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.s  ? '' : 'weui-cells_show'}}">
+             <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>企业（机构）名称</view>
+                <view class='conCol'>******信息科技有限公司</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册号</view>
+                <view class='conCol'>**********3351</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）性质</view>
+                <view class='conCol'>有限责任公司(自然人投资或控股)</view>
+            </view>
+
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本（万元）</view>
+                <view class='conCol'>300.00000.00</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）注册资本币种</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>企业（机构）状态</view>
+                <view class='conCol'>注销</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>比认缴出资币种对结果</view>
+                <view class='conCol'>人民币元</view>
+            </view>
+             <view class='report-context'>
+                <view class='tabCol'>职务</view>
+                <view class='conCol'>执行董事</view>
+            </view>
+            <view class='report-context'>
+                <view class='tabCol'>任职（投资）企业总数量</view>
+                <view class='conCol'>1</view>
+            </view>
+        </view>
+    </view>
+
+   <!-- 犯罪嫌疑人 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.t ? 'kind-list__item-hd_show' : ''}}" data-id='t'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/jibenxinxi.png'></image>
+            <text>犯罪嫌疑人</text>
+        </view>
+        <image class="icon-up {{ arrow.t ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.t ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.t  ? '' : 'weui-cells_show'}}">
+            
+            <view class='report-context'>
+                <view class='tabCol'>比对结果</view>
+                <view class='conCol'>命中</view>
+            </view>
+           
+        </view>
+    </view>
+
+
+ <!-- 前科记录 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.u ? 'kind-list__item-hd_show' : ''}}" data-id='u'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/sedu.png'></image>
+            <text>前科记录</text>
+        </view>
+        <image class="icon-up {{ arrow.u ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.u ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.u  ? '' : 'weui-cells_show'}}">
+            
+            <view class='report-context'>
+                <view class='tabCol'>比对结果</view>
+                <view class='conCol'>命中</view>
+            </view>
+           
+        </view>
+    </view>
+
+     <!-- 涉案记录 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.t ? 'kind-list__item-hd_show' : ''}}" data-id='v'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/xidu.png'></image>
+            <text>涉案记录</text>
+        </view>
+        <image class="icon-up {{ arrow.v ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.v ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.v  ? '' : 'weui-cells_show'}}">           
+            <view class='report-context'>
+                <view class='tabCol'>比对结果</view>
+                <view class='conCol'>命中</view>
+            </view> 
+        </view>
+    </view>
+
+
+     <!-- 失信记录 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.w ? 'kind-list__item-hd_show' : ''}}" data-id='w'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/xingshi.png'></image>
+            <text>失信记录</text>
+        </view>
+        <image class="icon-up {{ arrow.w ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.w ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.w  ? '' : 'weui-cells_show'}}">
+            
+            <view class='report-context'>
+                <view class='tabCol'>比对结果</view>
+                <view class='conCol'>命中</view>
+            </view>
+           
+        </view>
+    </view>
+
+    <!-- 风险清单 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fengxianqingdan ? 'kind-list__item-hd_show' : ''}}" data-id='fengxianqingdan'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/fengxianqingdan.png'></image>
+            <text>风险清单</text>
+        </view>
+        <image class="icon-up {{ arrow.fengxianqingdan? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.fengxianqingdan ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.fengxianqingdan  ? '' : 'weui-cells_show'}}">
+           <view class='trigon-view'>
+                    <view class='trigon text-size-14'>第1条</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>金额区间最大值</view>
+                <view class='conCol'>不明最大金额</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>金额区间最小值</view>
+                <view class='conCol'>不明最小金额三级</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>风险类别</view>
+                <view class='conCol'>多头借贷风险</view>
+            </view>
+               <view class='report-context'>
+                <view class='tabCol'>交易时间</view>
+                <view class='conCol'>2016-12-09</view>
+            </view>
+        </view>
+    </view>
+
+     <!-- 欺诈信息验证 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.x ? 'kind-list__item-hd_show' : ''}}" data-id='x'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/qyz_icon.png'></image>
+            <text>欺诈信息验证</text>
+        </view>
+        <image class="icon-up {{ arrow.x ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.x ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.x  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>欺诈信息验证结果</view>
+                <view class='conCol'>姓名与身份证号匹配</view>
+            </view>
+        </view>
+    </view>
+
+     <!-- 欺诈关注清单 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.y ? 'kind-list__item-hd_show' : ''}}" data-id='y'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/gz_icon.png'></image>
+            <text>欺诈关注清单</text>
+        </view>
+        <image class="icon-up {{ arrow.y ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.y ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.y  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>欺诈关注清单是否命中</view>
+                <view class='conCol'>否</view>
+            </view> 
+        </view>
+    </view>
+
+
+    <!-- 申请欺诈评分 -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.z ? 'kind-list__item-hd_show' : ''}}" data-id='z'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/xs_icon.png'></image>
+            <text>申请欺诈评分</text>
+        </view>
+        <image class="icon-up {{ arrow.z ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.z ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.z  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>申请欺诈评分</view>
+                <view class='conCol'>100</view>
+            </view>
+           <view class='report-context'>
+                <view class='tabCol'>申请欺诈评分说明</view>
+                <view class='conCol'> 
+                0-40：欺诈风险极高的用户，建议驳回用户的任何服务请求
+                            40-80：欺诈中或低风险，建议自行判断用户
+                            80-100：优质无欺诈或者低风险用户</view>
+            </view>
+        </view>
+    </view>
+
+       <!-- hanglvxx -->
+   <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.y ? 'kind-list__item-hd_show' : ''}}" data-id='hanglvxx'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/hanglvxx.png'></image>
+            <text>航旅信息</text>
+        </view>
+        <image class="icon-up {{ arrow.hanglvxx ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.hanglvxx ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+      <view class="weui-cells {{arrow.hanglvxx  ? '' : 'weui-cells_show'}}">
+            <view class='report-context'>
+                <view class='tabCol'>飞行次数</view>
+                <view class='conCol'>3</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>最繁忙的月份乘机次数</view>
+                <view class='conCol'>1</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>1年内平均折扣(元)</view>
+                <view class='conCol'>82.00</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>商务舱乘机次数</view>
+                <view class='conCol'>0</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>公务舱乘机次数</view>
+                <view class='conCol'>0</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>经济舱乘机次数</view>
+                <view class='conCol'>3</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>最频繁乘机出发城市</view>
+                <view class='conCol'>南京2次,珠海1次</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>最频繁乘机到达城市</view>
+                <view class='conCol'>北京1次,长沙1次,南京1次</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>最频繁使用航空公司以及乘机次数</view>
+                <view class='conCol'>南航,2次</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>国内飞行次数</view>
+                <view class='conCol'>3</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>免票次数</view>
+                <view class='conCol'>0</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>平均票价（元）</view>
+                <view class='conCol'>1143.33</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>延误时间</view>
+                <view class='conCol'>53</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>平均提前多少天出票</view>
+                <view class='conCol'>3</view>
+            </view> 
+             <view class='report-context'>
+                <view class='tabCol'>最后飞行时间</view>
+                <view class='conCol'>2017-03-13</view>
+            </view> 
+              <view class='report-context'>
+                <view class='tabCol'>最后起飞城市</view>
+                <view class='conCol'>南京</view>
+            </view> 
+              <view class='report-context'>
+                <view class='tabCol'>最后抵达城市</view>
+                <view class='conCol'>北京</view>
+            </view> 
+              <view class='report-context'>
+                <view class='tabCol'>总共飞行里程数（单位KM）</view>
+                <view class='conCol'>3324</view>
+            </view> 
+              <view class='report-context'>
+                <view class='tabCol'>飞行次数范围开始</view>
+                <view class='conCol'>3</view>
+            </view> 
+              <view class='report-context'>
+                <view class='tabCol'>飞行次数范围结束</view>
+                <view class='conCol'>5</view>
+            </view> 
+
+               <view class='report-context'>
+                <view class='tabCol'>国内飞行占比</view>
+                <view class='conCol'>100</view>
+            </view> 
+            <view class='report-context'>
+                <view class='tabCol'>国外飞行占比</view>
+                <view class='conCol'>0</view>
+            </view>
+        </view>
+    </view>
+
+</view>
+

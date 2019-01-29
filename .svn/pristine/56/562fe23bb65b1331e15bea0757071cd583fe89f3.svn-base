@@ -1,0 +1,31 @@
+/**index.wxss**/
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-menu{
+  width: 100%;
+  background: #fff;
+  margin: 40rpx;
+}
+
+.login-button{
+    border-radius : 12rpx;
+    background-color: #e3b96f;
+    color: #fff;
+    margin-bottom: 80rpx;
+    width: 80%
+}
+
+.button-view{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  position: fixed;
+  z-index: 500;
+}

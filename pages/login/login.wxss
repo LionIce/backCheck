@@ -1,0 +1,79 @@
+.queick-view{
+  display: flex;  
+  flex-direction:row-reverse; 
+  width:100%;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-name{
+  margin: 20px;
+}
+
+.bg-view{
+   width: 100%; 
+   height: 100vh;
+   background : url('https://m.zmbeidiao.com/img/wxapplet/pic_bg.png');
+   background-size:100% 100vh;
+   background-repeat:no-repeat;
+}
+
+.image-logo {
+  width: 119rpx;
+  height: 119rpx;
+  margin-top: 50px;
+}
+
+.queick-text{
+  margin: 20rpx;
+}
+
+
+input{
+    margin : 10px; 
+    font-size: 14px;
+    color: #fff;
+    width: 100%;
+}
+
+.icon-input{
+  width: 28rpx;
+  height: 38rpx;
+}
+
+.inputView{
+    text-decoration:underline;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-bottom: 1rpx solid #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+.login-view-text{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-view-text-item{
+   margin:20px; 
+}
+
+.login-button{
+    margin-left: 20rpx; 
+    margin-right: 20rpx;
+    border-radius : 12rpx;
+    background-color: #e3b96f;
+    color: #fff;
+}
+
+form{
+  width: 93%;
+}

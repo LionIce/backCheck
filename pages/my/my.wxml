@@ -1,0 +1,73 @@
+<import src="../../components/dialog/dialog.wxml"/>
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
+<view style="padding-bottom:25rpx">
+    <view class="container bg-image-me">
+      <view class='bg-image-message-view'>
+            <image  class="bg-image-message"  src="{{message?'../../assets/images/nav_newinformations.png':'../../assets/images/nav_informations.png'}}" bindtap='onMessage'  hidden='true'></image> 
+      </view>
+      <view>
+          <image class="userinfo-avatar" src="../../assets/images/btn_userheadportrait.png" ></image> 
+      </view>
+      <view class="text-white text-size-14">
+          {{userInfo.mobile}}
+      </view>
+      <view wx:if="{{userInfo.orgName}}" class="text-white text-size-14">
+          {{userInfo.orgName}}
+      </view>
+      <view class="text-white text-size-14">
+          {{userInfo.name}}
+      </view>
+    </view>
+    <view class="item-menu">
+
+      <navigator url="{{userInfo.accountbalance}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			        <view class="weui-cell__hd">
+			            <image src="../../assets/images/icon_accountbalance.png" style="margin-right: 20rpx;vertical-align: middle;width:30rpx; height: 30rpx;"></image>
+			        </view>
+			        <view class="weui-cell__bd text-gary  text-size-16">账户余额</view>
+			        <view class="weui-cell__ft weui-cell__ft_in-access text-gary1 text-size-14">{{ userInfo.acctBal }}</view>
+			</navigator>  
+
+      <navigator url="/pages/transactions/transactions" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			        <view class="weui-cell__hd">
+			            <image src="../../assets/images/icon_tradingrecord.png" style="margin-right: 20rpx;vertical-align: middle;width:30rpx; height: 30rpx;"></image>
+			        </view>
+			        <view class="weui-cell__bd text-gary  text-size-16">交易记录</view>
+			        <view class="weui-cell__ft weui-cell__ft_in-access text-gary1 text-size-14">　</view>
+			</navigator>  
+
+      <navigator url="{{userInfo.certification}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			        <view class="weui-cell__hd">
+			            <image src="../../assets/images/icon_realnameauthentication.png" style="margin-right: 20rpx;vertical-align: middle;width:30rpx; height: 30rpx;"></image>
+			        </view>
+			        <view class="weui-cell__bd text-gary  text-size-16">实名认证</view>
+			        <view class="weui-cell__ft weui-cell__ft_in-access text-gary1 text-size-14">{{userInfo.authStatus}}</view>
+			</navigator> 
+
+      <navigator  class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='makePhoneCall'>
+                <view class="weui-cell__hd">
+                    <image src="../../assets/images/icon_customerservice.png" style="margin-right: 20rpx;vertical-align: middle;width:30rpx; height: 30rpx;"></image>
+                </view>
+                <view class="weui-cell__bd text-gary  text-size-16">客服热线</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access text-gary1 text-size-14">　</view>
+      </navigator>
+
+      <navigator  url="/pages/setting/setting"  class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
+                <view class="weui-cell__hd">
+                    <image src="../../assets/images/icon_setting.png" style="margin-right: 20rpx;vertical-align: middle;width:30rpx; height: 30rpx;"></image>
+                </view>
+                <view class="weui-cell__bd text-gary  text-size-16">设置</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access text-gary1 text-size-14">　</view>
+      </navigator>
+		</view>
+
+     <view wx:if="{{userInfo.authStatus == 0}}" class="b1" hidden="{{flag}}"> 
+        <view class="t_w"> 
+            <view class="b2"> 
+              <button class='button'  bindtap='goCertification'>去认证</button>
+            </view> 
+             <image bindtap='b'  class='image-finish' src='../../assets/images/delete_real.png'></image>
+        </view> 
+      </view> 
+</view>

@@ -1,0 +1,8 @@
+
+<swiper current="0" duration="500" vertical="true"> 
+  <block wx:for="{{imgUrls}}" wx:for-item="url">
+    <swiper-item>
+      <image  src="{{url}}" class="slide-image" />
+    </swiper-item>
+    </block>
+</swiper>

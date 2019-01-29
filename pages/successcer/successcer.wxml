@@ -1,0 +1,5 @@
+
+<view class="success-view">
+  <text class='text-size-14 text-gary'>您的认证信息已提交，我们会在3个工作日内完成审核，审核结果将通过邮件和短信通知您。</text>
+</view>
+ <button class='button'  bindtap="confirm">确定</button>

@@ -1,0 +1,18 @@
+<import src="../../components/dialog/dialog.wxml"/>
+
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
+<view class="container">
+  <view class="item-menu">
+			<block wx:for="{{ components }}" wx:key="">
+			    <navigator url="{{ item.url }}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			        <view class="weui-cell__bd text-gary  text-size-16">{{ item.title }}</view>
+			        <view class="weui-cell__ft weui-cell__ft_in-access text-gary1 text-size-14">{{ item.remark }}</view>
+			    </navigator>
+		  </block>
+	</view>
+    <view class='button-view'>
+       <button class="login-button" bindtap='confirm' >退出登录</button>
+    </view>
+   
+</view>

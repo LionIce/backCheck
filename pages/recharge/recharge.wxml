@@ -1,0 +1,27 @@
+<import src="../../components/toptips/toptips.wxml"/>
+
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+<view >
+    <view class='input-recharge-text'>
+        <text class='text-recharge'>充值金额</text>
+        <view class="input-recharge-view">
+          <text class='text-gary' style='font-size:30px;'>￥</text>
+          <input type='number' class='text-gary' style='font-size:30px;height:110rpx' value='{{money}}' bindinput="moneyInput"></input>
+        </view>
+        
+    </view>
+    
+    <view class='money-view' >
+      <block wx:for="{{items}}" wx:for-index="idx" wx:for-item="item">
+          <view  class='{{item.checked?"money-text-check":"money-text"}}' bindtap='checkMoney' data-money='{{item.value}}' data-index='{{idx}}' wx:if="{{idx <= 2}}">{{item.money}}</view>
+      </block> 
+    </view>
+
+    <view class='money-view' >
+      <block wx:for="{{items}}" wx:for-index="idx" wx:for-item="item">
+          <view  class='{{item.checked?"money-text-check":"money-text"}}' bindtap='checkMoney' data-index='{{idx}}' data-money='{{item.value}}' wx:if="{{idx > 2}}">{{item.money}}</view>
+      </block> 
+    </view>
+     <button class='button' bindtap='recharge'>充值</button>
+</view>

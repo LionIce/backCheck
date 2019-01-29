@@ -1,0 +1,62 @@
+<import src="../../components/dialog/dialog.wxml"/>
+<import src="../../components/toptips/toptips.wxml"/>
+
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+
+<view style='padding-bottom:15rpx'>
+  <block wx:for="{{listReport}}" wx:for-index="index" wx:for-item="item">
+      <view class="container" bindtap="viewReport" data-id="{{item.id}}" data-status="{{item.status}}">
+        <view class='report-name report-view-line'>
+          <view class='icon-view'>
+              <image class='icon-image' src='../../assets/images/icon_report_1.png' ></image>
+              <text class='text-size-14 text-gary'>{{item.name}}</text>
+              <view class='report-version'>{{item.tplName}}</view>
+          </view>
+          <text style='margin-right:20px;' class='text-size-14 text-red'>{{item.status}}</text>
+        </view>
+        <view class='report-name'>
+          <view class='icon-view'>
+              <image class="icon-image-min {{item.idNo == ''|| item.idNo == null?'view-hide':'view-show'}}" src='../../assets/images/icon_report_idcard.png' ></image>
+              <text class='text-size-14 text-gary'>{{item.idNo}}</text>
+          </view>
+          <text style='margin-right:20px; font-weight:bold' class='text-size-14'>￥{{item.orderAmt}}</text>
+        </view>
+        <view class='report-name'>
+          <view class='icon-view'>
+              <image class="icon-image-min {{item.mobile == ''|| item.mobile == null?'view-hide':'view-show'}}" src='../../assets/images/icon_report_phone.png' ></image>
+              <text class='text-size-14 text-gary'>{{item.mobile}}</text>
+          </view>
+          <text style='margin-right:20px;' class='text-size-14 text-gary'>{{item.createTime}}</text>
+        </view>
+
+      <view class="report-name report-view-line">
+          <view class='icon-view '>
+          <image class="icon-image-min {{item.position == ''|| item.position == null?'view-hide':'view-show'}}" src='../../assets/images/icon_position.png' ></image>
+              <text class='text-size-14 text-gary'>{{item.position}}</text>
+          </view>
+          <view class="icon-view {{item.status == '已完成'|| item.status == '已取消' ?'view-hide':'view-show'}}" >
+              <image class="icon-image-min {{collect[index]?'urge-dis':'collection'}}" ></image>
+              <block wx:if="{{collect[index]}}">
+              <text style='color:#c8c8c8;margin-right:20px; ' class='text-size-14' disabled="disabled">已催候选人</text> 
+              </block>
+              <block wx:else>
+   <text style='color:#64cbff;margin-right:20px;' class='text-size-14' catchtap="collectReport" data-id="{{item.id}}" data-index= "{{index}}" >催候选人</text>
+              </block>
+          </view>
+        </view>
+        <view class='operation' wx:if="{{item.status != '待授权'}}">
+          <text class='delete-view text-size-14 text-gary' catchtap="operationReport" data-id="{{item.id}}" data-index= "{{index}}" data-status="{{item.status}}">删除订单</text>
+        </view>
+      </view>
+  </block>
+
+
+<view wx:if="{{hidden}}" class="{{hidden ? 'empty-view-show' : 'empty-view-hidden'}}" bindtap='onclickempty'>
+    <image  class = "message-empty" src='../../assets/images/message_empty.png'></image>
+    <text class='text-size-16 text-gary1' style='margin-top:25rpx'>暂无数据</text>
+    <text class='text-size-14 text-blue' style='margin-top:10rpx;'>点击屏幕重新尝试</text>
+</view>
+  
+</view>

@@ -1,0 +1,46 @@
+<import src="../../components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+<form bindsubmit="submitForm">
+<view style="padding-top:35rpx">
+  <view class='input-view'> 
+    <text  style='width:80px' class='text-size-14;text-gary'>姓名\r\t:</text>
+    <input name = "name"class='input' maxlength="20" placeholder="请输入您的真实姓名(输入中文)" placeholder-style="color: #8994A4;font-size: 14px;"  />
+  </view>
+ <view class='input-view'> 
+    <text style='width:80px' class='text-size-14;text-gary'>身份证号\r\t:</text>
+    <input name = "idcard" class='input' maxlength="24" placeholder="请输入您的身份证号" placeholder-style="color: #8994A4;font-size: 14px;"  />
+  </view>
+
+  <view class="image-view" style='margin-top:35rpx;'>
+      <view class="image-view-text">
+          <text class='text-size-14 text-gary padding'>身份证正面照</text>
+          <text class='text-size-14 text-yellow padding' bindtap='a'  data-zheng="1">示例</text>
+      </view>
+       <view class='{{zheng?"image-select":"image-select-hava"}}' bindtap="chooseimagezheng">
+            <image wx:if="{{tempFilePathsZheng!='' && tempFilePathsZheng!=null}}" src="{{tempFilePathsZheng }}" mode="aspecFill" style="width: 330rpx; height:225px "/>  
+            <view class='{{zheng?"text-padding-hava":"text-padding"}}'>(请保证图片清晰可见)</view>  
+      </view>
+  </view>
+  <view class="image-view">
+      <view class="image-view-text">
+          <text class='text-size-14 text-gary padding'>身份证反面照</text>
+          <text class='text-size-14 text-yellow padding' bindtap='a'  data-zheng="0">示例</text>
+      </view>
+       <view class='{{fan?"image-select":"image-select-hava"}}' bindtap="chooseimagefan">
+            <image wx:if="{{tempFilePathsFan!='' && tempFilePathsFan!=null}}" src="{{tempFilePathsFan }}" mode="aspecFill" style="width: 330rpx; height:225px "/>  
+            <view class='{{fan?"text-padding-hava":"text-padding"}}'>(请保证图片清晰可见)</view>  
+      </view>
+  </view>
+
+  <button class='button'  formType="submit">完成</button>
+
+  <view class="b1" hidden="{{flag}}"> 
+   <view class="t_w"> 
+      <view class="b2"> 
+        <image src='{{url}}'></image> 
+      </view> 
+      <image bindtap='b'  class='image-finish' src='../../assets/images/delete_real.png'></image>
+   </view> 
+</view> 
+</view>
+</form>

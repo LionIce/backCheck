@@ -1,0 +1,2156 @@
+<view>
+    <view class="report-input">
+        <view class='report-input-item'>
+            <text class='text-white'>NO.{{report.reportInfo.id}}</text>
+        </view>
+        <view class='report-input-item'>
+            <text class='text-white'>{{report.inputMap.name}}</text>
+        </view>
+        <view class='report-input-item'>
+            <text wx:if="{{report.inputMap.idNo != null}}"  class='text-white'>{{report.inputMap.idNo}}</text>
+            <text wx:if="{{report.inputMap.email != null}}"  class='text-white'>{{report.inputMap.email}}</text>
+        </view>
+        <view class='report-input-item'>
+            <text class='text-white'> {{report.inputMap.mobile}}</text>
+            <text class='text-white'> {{report.reportInfo.createTime}}</text>
+        </view>
+
+    </view>
+
+    <!-- 基本信息 -->
+    <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.b ? 'kind-list__item-hd_show' : ''}}" data-id='b'>
+        <view class='report-titile'>
+            <image class='icon' src='https://m.zmbeidiao.com/img/jibenxinxi.png'></image>
+            <text>基本信息</text>
+        </view>
+        <image class="icon-up {{ arrow.b ? 'icon-down' : ''}}" src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+    </view>
+    <view class="  {{arrow.b ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+        <view class="weui-cells {{arrow.b  ? '' : 'weui-cells_show'}}">
+            <view class='report-context' wx:if="{{report.inputMap.name != null && report.inputMap.name !=''}}">
+                <view class='tabCol'>姓名</view>
+                <view class='conCol'>{{report.inputMap.name}}</view>
+            </view>
+            <view class='report-context' wx:if="{{report.inputMap.idNo != null && report.inputMap.idNo !=''}}">
+                <view class='tabCol'>身份证号</view>
+                <view class='conCol'>{{report.inputMap.idNo}}</view>
+            </view>
+
+            <view class='report-context' wx:if="{{report.creditReportDigest.sex!= null && report.creditReportDigest.sex !=''}}">
+                <view class='tabCol'>性别</view>
+                <view class='conCol'>{{report.creditReportDigest.sex}}</view>
+            </view>
+
+          <view class='report-context' wx:if="{{report.creditReportDigest.birthday!= null && report.creditReportDigest.birthday !=''}}">
+                <view class='tabCol'>出生日期</view>
+                <view class='conCol'>{{report.creditReportDigest.birthday}}</view>
+            </view>
+
+             <view class='report-context' wx:if="{{report.creditReportDigest.householdAddr!= null && report.creditReportDigest.householdAddr !=''}}">
+                <view class='tabCol'>发证地</view>
+                <view class='conCol'>{{report.creditReportDigest.householdAddr}}</view>
+            </view>
+
+            <view class='report-context' wx:if="{{report.inputMap.mobile != null && report.inputMap.mobile !=''}}">
+                <view class='tabCol'>手机号</view>
+                <view class='conCol'>{{report.inputMap.mobile}}</view>
+            </view>
+            <view class='report-context' wx:if="{{report.inputMap.email != null && report.inputMap.email !=''}}">
+                <view class='tabCol'>邮箱</view>
+                <view class='conCol'>{{report.inputMap.email}}</view>
+            </view>
+            <view class='report-context' wx:if="{{report.inputMap.position != null && report.inputMap.position !=''}}">
+                <view class='tabCol'>职位</view>
+                <view class='conCol'>{{report.inputMap.position}}</view>
+            </view>
+            <view class='report-context'
+                  wx:if="{{report.inputMap.idCardImage != null && report.inputMap.idCardImage !=''}}">
+                <view class='tabCol'>身份证照片</view>
+                <image class='conCol' src='{{report.inputMap.idCardImage}}'></image>
+            </view>
+        </view>
+    </view>
+
+    <!-- 基本信息验证 -->
+    <block wx:if="{{report.detail['001'] != null || report.detail['006'] != null || report.detail['007'] != null}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.a ? 'kind-list__item-hd_show' : ''}}"
+              data-id='a'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/jiaoyan.png'></image>
+                <text>基本信息验证</text>
+            </view>
+            <image class="icon-up {{ arrow.a ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.a ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.a  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['001'] != null && report.detail['001'] !=''}}">
+                    <view class='tabCol'>身份证实名核验</view>
+                    <view class='conCol' wx:if="{{!report.detail['001'].isSuccess}}">一致性校验失败</view>
+                    <view class='conCol'>
+                        <block wx:for="{{report.detail['001'].itemData}}" wx:for-item="itemData"
+                               wx:if="{{itemData.itemPropName == 'checkResult'}}">
+                            {{itemData.itemPropValue}}
+                        </block>
+                    </view>
+                </view>
+
+                <view class='report-context' wx:if="{{report.detail['006'] != null && report.detail['006'] !=''}}">
+                    <view class='tabCol'>运营商验证</view>
+                    <view class='conCol' wx:if="{{!report.detail['006'].isSuccess}}">一致性校验失败</view>
+                    <view class='conCol'>
+                        <block wx:for="{{report.detail['006'].itemData}}" wx:for-item="itemData"
+                               wx:if="{{itemData.itemPropName == 'checkResult'}}">
+                            {{itemData.itemPropValue}}
+                        </block>
+                    </view>
+                </view>
+
+                <view class='report-context' wx:for="{{report.detail['007'].itemData}}" wx:for-item="itemData">
+                    <view class='tabCol'>身份验证返照</view>
+                    <view class='conCol' wx:if="{{!report.detail['007'].isSuccess}}">一致性校验失败</view>
+                    <view class='conCol' wx:if="{{itemData.itemPropName == 'checkResult'}}">
+                        {{itemData.itemPropValue}}
+                    </view>
+                    <image class='conCol' src='data:image/png;base64,{{itemData.itemPropValue}}'
+                           wx:if="{{itemData.itemPropName == 'certPictures'}}"></image>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 户籍信息 -->
+    <block wx:if="{{report.detail['102'] != null && report.detail['102'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.c ? 'kind-list__item-hd_show' : ''}}"
+              data-id='c'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/huji.png'></image>
+                <text>户籍信息</text>
+            </view>
+            <image class="icon-up {{ arrow.c ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.c ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.c ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['102'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['102'].isSuccess && itemData.itemPropValue!=null &&itemData.itemPropValue!=''}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+
+                <view class='report-context' wx:if="{{!report.detail['102'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关户籍信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+    <!--  学历信息  -->
+    <block wx:if="{{report.detail['101'] != null && report.detail['101'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.e ? 'kind-list__item-hd_show' : ''}}"
+              data-id='e'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/degree.png'></image>
+                <text>学历信息</text>
+            </view>
+            <image class="icon-up {{ arrow.e ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.e ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.e  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['101'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['101'].isSuccess && itemData.itemPropValue!=null &&itemData.itemPropValue!=''}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+
+                <view class='report-context' wx:if="{{!report.detail['101'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关学历信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!--  学历信息  -->
+    <block wx:if="{{report.detail['139'] != null && report.detail['139'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.e ? 'kind-list__item-hd_show' : ''}}"
+              data-id='e'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/degree.png'></image>
+                <text>学历信息</text>
+            </view>
+            <image class="icon-up {{ arrow.e ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.e ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.e  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['139'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['139'].isSuccess && itemData.itemPropValue!=null && itemData.itemPropValue!='' && itemData.itemPropName !='graduationPictures'}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+
+                <view class='report-context' wx:for="{{report.detail['139'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['139'].isSuccess && itemData.itemPropValue!=null && itemData.itemPropValue!='' && itemData.itemPropName =='graduationPictures'}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <image class='conCol' src='data:image/png;base64,{{itemData.itemPropValue}}'
+                           wx:if="{{itemData.itemPropValue!= '' && itemData.itemPropName == 'graduationPictures'}}"></image>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['139'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关学历信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 职业资格 -->
+    <block wx:if="{{report.detail['119'] != null && report.detail['119'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.f ? 'kind-list__item-hd_show' : ''}}"
+              data-id='f'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zhiyezhige.png'></image>
+                <text>职业资格</text>
+            </view>
+            <image class="icon-up {{ arrow.f ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="{{arrow.f ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.f  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['119'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['119'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                    </block>
+                </block>
+            </view>
+            <view class='report-context' wx:if="{{!report.detail['119'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关职业资格信息</text>
+            </view>
+        </view>
+    </block>
+
+    <!-- 驾驶证核验 -->
+    <block wx:if="{{report.detail['009'] != null && report.detail['009'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.g ? 'kind-list__item-hd_show' : ''}}"
+              data-id='g'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/jiashizheng.png'></image>
+                <text> 驾驶证核验</text>
+            </view>
+            <image class="icon-up {{ arrow.g ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.g ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.g  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['009'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['009'].isSuccess && itemData.itemPropValue!=null &&itemData.itemPropValue!=''}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['009'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关驾驶证信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+
+    <!-- 健康证核查 -->
+    <block wx:if="{{report.detail['130'] != null && report.detail['130'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.jiankangzheng ? 'kind-list__item-hd_show' : ''}}"
+              data-id='jiankangzheng'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/jiankangzheng.png'></image>
+                <text> 健康证核查</text>
+            </view>
+            <image class="icon-up {{ arrow.jiankangzheng ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.jiankangzheng ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.jiankangzheng ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['130'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['130'].isSuccess && itemData.itemPropValue!=null &&itemData.itemPropValue!=''}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['130'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关健康证信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 手机在网时长 -->
+    <block wx:if="{{report.detail['120'] != null && report.detail['120'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.i ? 'kind-list__item-hd_show' : ''}}"
+              data-id='i'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/mobile_network_state.png'></image>
+                <text>手机在网时长</text>
+            </view>
+            <image class="icon-up {{ arrow.i ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.i ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.i  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['120'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['120'].isSuccess && itemData.itemPropValue!=null &&itemData.itemPropValue!=''}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['120'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关手机在网时长信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 诉讼摘要接口信息 -->
+    <block wx:if="{{report.detail['125'] != null && report.detail['125'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.l ? 'kind-list__item-hd_show' : ''}}"
+              data-id='l'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanpaju.png'></image>
+                <text>法院判决</text>
+            </view>
+            <image class="icon-up {{ arrow.l ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.l ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.l  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['125'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['125'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['125'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关法院判决信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 法院黑名单 -->
+    <block wx:if="{{report.detail['121'] != null && report.detail['121'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.l ? 'kind-list__item-hd_show' : ''}}"
+              data-id='j'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanhmd.png'></image>
+                <text>法院黑名单</text>
+            </view>
+            <image class="icon-up {{ arrow.j ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.j ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.j  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['121'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['121'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['121'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关法院黑名单信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+    <!-- 法院失信执行黑名单 -->
+    <block wx:if="{{report.detail['124'] != null && report.detail['124'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.k ? 'kind-list__item-hd_show' : ''}}"
+              data-id='k'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuansxhmd.png'></image>
+                <text>法院失信执行黑名单</text>
+            </view>
+            <image class="icon-up {{ arrow.k ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.k ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.k  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['124'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['124'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['124'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关法院失信执行黑名单信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 法院执行黑名单 -->
+    <block wx:if="{{report.detail['123'] != null && report.detail['123'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.a2 ? 'kind-list__item-hd_show' : ''}}"
+              data-id='a2'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanzxhmd.png'></image>
+                <text>法院执行黑名单</text>
+            </view>
+            <image class="icon-up {{ arrow.a2 ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.a2 ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.a2  ? '' : 'weui-cells_show'}}">
+
+                <block wx:for="{{report.detail['123'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['123'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['123'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关法院执行黑名单信息</text>
+                </view>
+            </view>
+
+        </view>
+    </block>
+    <!-- 法院结案黑名单 -->
+    <block wx:if="{{report.detail['122'] != null && report.detail['122'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.m ? 'kind-list__item-hd_show' : ''}}"
+              data-id='m'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanjahmd.png'></image>
+                <text>法院结案黑名单</text>
+            </view>
+            <image class="icon-up {{ arrow.m ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.m ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.m  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['122'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['122'].isSuccess}}">
+
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                    </block>
+                </block>
+            </view>
+            <view class='report-context' wx:if="{{!report.detail['122'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关法院结案黑名单信息</text>
+            </view>
+        </view>
+    </block>
+
+ <!--  诉讼摘要接口信息-->
+    <block wx:if="{{report.detail['134'] != null && report.detail['134'] !='' && report.detail['134'].isSuccess}}">
+
+      <block wx:for="{{report.detail['134'].itemData}}" wx:for-item="itemData" wx:if="{{itemData.set == true}}">
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.cpwsList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='cpwsList' wx:if="{{itemData.itemPropName == 'cpwsList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanpanjue.png'></image>
+                <text>裁判文书</text>
+            </view>
+            <image class="icon-up {{ arrow.cpwsList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+      
+
+        <view class="  {{arrow.cpwsList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'cpwsList'}}">
+            <view class="weui-cells {{arrow.cpwsList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+
+       <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zxggList' wx:if="{{itemData.itemPropName == 'zxggList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/enterprise_investment.png'></image>
+                <text>执行公告</text>
+            </view>
+            <image class="icon-up {{ arrow.zxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+
+      <view class="  {{arrow.zxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'zxggList'}}">
+            <view class="weui-cells {{arrow.zxggList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+
+         <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.sxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='sxggList' wx:if="{{itemData.itemPropName == 'sxggList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shixingheimingdan.png'></image>
+                <text>失信公告</text>
+            </view>
+            <image class="icon-up {{ arrow.sxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+
+        <view class="  {{arrow.sxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'sxggList'}}">
+            <view class="weui-cells {{arrow.sxggList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+
+         <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.ktggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='ktggList' wx:if="{{itemData.itemPropName == 'ktggList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zhixingheimingdan.png'></image>
+                <text>开庭公告</text>
+            </view>
+            <image class="icon-up {{ arrow.ktggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+
+        <view class="  {{arrow.ktggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'ktggList'}}">
+            <view class="weui-cells {{arrow.ktggList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fyggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='fyggList' wx:if="{{itemData.itemPropName == 'fyggList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/jieanheimingdan.png'></image>
+                <text>法院公告</text>
+            </view>
+            <image class="icon-up {{ arrow.fyggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+      
+
+        <view class="  {{arrow.fyggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'fyggList'}}">
+            <view class="weui-cells {{arrow.fyggList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+      </block>
+
+        <block wx:if="{{!report.detail['134'].isSuccess}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.cpwsList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='cpwsList' >
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanpanjue.png'></image>
+                <text>裁判文书</text>
+            </view>
+            <image class="icon-up {{ arrow.cpwsList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.cpwsList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" >
+            <view class="weui-cells {{arrow.cpwsList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关裁判文书信息</text>
+                </view>
+            </view>
+        </view>
+
+       <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zxggList' >
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/enterprise_investment.png'></image>
+                <text>执行公告</text>
+            </view>
+            <image class="icon-up {{ arrow.zxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+      <view class="  {{arrow.zxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.zxggList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关执行公告信息</text>
+                </view>
+            </view>
+        </view>
+
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.sxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='sxggList'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shixingheimingdan.png'></image>
+                <text>失信公告</text>
+            </view>
+            <image class="icon-up {{ arrow.sxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.sxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" >
+            <view class="weui-cells {{arrow.sxggList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关失信公告信息</text>
+                </view>
+            </view>
+        </view>
+
+
+         <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.ktggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='ktggList' >
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zhixingheimingdan.png'></image>
+                <text>开庭公告</text>
+            </view>
+            <image class="icon-up {{ arrow.ktggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.ktggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.ktggList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' >
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关开庭公告信息</text>
+                </view>
+            </view>
+        </view>
+
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fyggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='fyggList' >
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/jieanheimingdan.png'></image>
+                <text>法院公告</text>
+            </view>
+            <image class="icon-up {{ arrow.fyggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.fyggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" >
+            <view class="weui-cells {{arrow.fyggList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' >
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关法院公告信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+  </block>
+
+
+
+
+  
+
+
+
+ <!--  涉诉详情-->
+    <block wx:if="{{report.detail['135'] != null && report.detail['135'] !='' && report.detail['135'].isSuccess}}">
+
+      <block wx:for="{{report.detail['135'].itemData}}" wx:for-item="itemData" wx:if="{{itemData.set == true}}">
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.cpwsList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='cpwsList' wx:if="{{itemData.itemPropName == 'cpwsList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanpanjue.png'></image>
+                <text>裁判文书</text>
+            </view>
+            <image class="icon-up {{ arrow.cpwsList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+      
+
+        <view class="  {{arrow.cpwsList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'cpwsList'}}">
+            <view class="weui-cells {{arrow.cpwsList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+
+       <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zxggList' wx:if="{{itemData.itemPropName == 'zxggList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/enterprise_investment.png'></image>
+                <text>执行公告</text>
+            </view>
+            <image class="icon-up {{ arrow.zxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+
+      <view class="  {{arrow.zxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'zxggList'}}">
+            <view class="weui-cells {{arrow.zxggList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+
+         <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.sxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='sxggList' wx:if="{{itemData.itemPropName == 'sxggList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shixingheimingdan.png'></image>
+                <text>失信公告</text>
+            </view>
+            <image class="icon-up {{ arrow.sxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+
+        <view class="  {{arrow.sxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'sxggList'}}">
+            <view class="weui-cells {{arrow.sxggList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+
+        
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.bgtList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='bgtList' wx:if="{{itemData.itemPropName == 'bgtList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zhixingheimingdan.png'></image>
+                <text>曝光台</text>
+            </view>
+            <image class="icon-up {{ arrow.bgtList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.bgtList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'bgtList'}}">
+            <view class="weui-cells {{arrow.bgtList  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx" wx:if="{{itemData.set == true && itemData.itemPropValue[0].length > 0}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.set == true && (itemData.itemPropValue.length == 0 || itemData.itemPropValue[0].length == 0)}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                </view>
+            </view>
+        </view>
+      </block>
+<!--  涉诉详情-->
+    <block wx:if="{{!report.detail['135'].isSuccess}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.cpwsList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='cpwsList'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fayuanpanjue.png'></image>
+                <text>裁判文书</text>
+            </view>
+            <image class="icon-up {{ arrow.cpwsList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.cpwsList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" >
+            <view class="weui-cells {{arrow.cpwsList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关裁判文书信息</text>
+                </view>
+            </view>
+        </view>
+
+       <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zxggList'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/enterprise_investment.png'></image>
+                <text>执行公告</text>
+            </view>
+            <image class="icon-up {{ arrow.zxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+      <view class="  {{arrow.zxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.zxggList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关执行公告信息</text>
+                </view>
+            </view>
+        </view>
+
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.sxggList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='sxggList'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shixingheimingdan.png'></image>
+                <text>失信公告</text>
+            </view>
+            <image class="icon-up {{ arrow.sxggList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.sxggList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.sxggList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关失信公告信息</text>
+                </view>
+            </view>
+        </view>
+
+
+         <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.bgtList ? 'kind-list__item-hd_show' : ''}}"
+              data-id='bgtList'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zhixingheimingdan.png'></image>
+                <text>曝光台</text>
+            </view>
+            <image class="icon-up {{ arrow.bgtList ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.bgtList ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.bgtList  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' >
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关开庭公告信息</text>
+                </view>
+            </view>
+        </view>
+  </block>
+  </block>
+
+
+
+
+  
+
+    <!-- 银行历史负债 -->
+<block wx:if="{{report.detail['126'] != null && report.detail['126'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.n ? 'kind-list__item-hd_show' : ''}}"
+              data-id='n'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/yinhanglsfz.png'></image>
+                <text>银行历史负债</text>
+            </view>
+            <image class="icon-up {{ arrow.n ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.n ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.n  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['126'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['126'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['126'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关银行历史负债信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+    <!-- 小贷负债 -->
+    <block wx:if="{{report.detail['127'] != null && report.detail['127'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.o ? 'kind-list__item-hd_show' : ''}}"
+              data-id='o'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/xiaodaifz.png'></image>
+                <text>小贷负债</text>
+            </view>
+            <image class="icon-up {{ arrow.o ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.o ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.o  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['127'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['127'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['127'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关小贷负债信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+       <!-- 网贷负债 -->
+    <block wx:if="{{report.detail['128'] != null && report.detail['128'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.p ? 'kind-list__item-hd_show' : ''}}"
+              data-id='p'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/wangdaifuzai.png'></image>
+                <text>网贷负债</text>
+            </view>
+            <image class="icon-up {{ arrow.p ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.p ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.p  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['128'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['128'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['128'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关网贷负债信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+     <!-- 网贷黑名单 -->
+    <block wx:if="{{report.detail['138'] != null && report.detail['138'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.wdhmd ? 'kind-list__item-hd_show' : ''}}"
+              data-id='wdhmd'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/wdhmd.png'></image>
+                <text> 网贷黑名单</text>
+            </view>
+            <image class="icon-up {{ arrow.wdhmd ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.wdhmd ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.wdhmd  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:for="{{report.detail['138'].itemData}}" wx:for-item="itemData"
+                      wx:if="{{report.detail['138'].isSuccess && itemData.itemPropValue!=null &&itemData.itemPropValue!=''}}">
+                    <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                    <view class='conCol'>{{itemData.itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['138'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关驾驶证信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+  
+       <!-- 信贷逾期 -->
+    <block wx:if="{{report.detail['142'] != null && report.detail['142'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.xindaiyuqi ? 'kind-list__item-hd_show' : ''}}"
+              data-id='xindaiyuqi'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/xindaiyuqi.png'></image>
+                <text>信贷逾期</text>
+            </view>
+            <image class="icon-up {{ arrow.xindaiyuqi ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.xindaiyuqi ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.xindaiyuqi  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['142'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['142'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['142'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关信贷逾期信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+ <!-- 信贷整合 -->
+    <block wx:if="{{report.detail['143'] != null && report.detail['143'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.shean ? 'kind-list__item-hd_show' : ''}}"
+              data-id='shean'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shean.png'></image>
+                <text>信贷整合</text>
+            </view>
+            <image class="icon-up {{ arrow.shean ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.shean ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.shean  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['143'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['143'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                  <view class='report-context'  wx:if="{{itemData.itemPropValue ==null || itemData.itemPropValue ==''}}">
+                        <text class='text-gary1'>根据已提供的查询条件，未能查得相关{{itemData.itemPropLabel}}信息</text>
+                  </view>
+
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true }}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo" >
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null || detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+
+
+                <view class='report-context' wx:if="{{!report.detail['143'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关信贷整合信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 在外担任法人 -->
+    <block wx:if="{{report.detail['113'] != null && report.detail['113'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.faren ? 'kind-list__item-hd_show' : ''}}"
+              data-id='faren'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/faren.png'></image>
+                <text>在外担任法人</text>
+            </view>
+            <image class="icon-up {{ arrow.faren ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.faren ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.faren  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['113'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['113'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['113'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在外担任法人信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+   <!-- 在外担任股东 -->
+    <block wx:if="{{report.detail['114'] != null && report.detail['114'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.gudong ? 'kind-list__item-hd_show' : ''}}"
+              data-id='gudong'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/gudong.png'></image>
+                <text>在外担任股东</text>
+            </view>
+            <image class="icon-up {{ arrow.gudong ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.gudong ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.gudong  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['114'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['114'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['114'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在外担任股东信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+  
+    <!-- 在外担任高管 -->
+    <block wx:if="{{report.detail['115'] != null && report.detail['115'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zaiwaidrgg ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zaiwaidrgg'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zaiwaidrgg.png'></image>
+                <text>在外担任高管</text>
+            </view>
+            <image class="icon-up {{ arrow.zaiwaidrgg ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.zaiwaidrgg ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.zaiwaidrgg  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['115'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['115'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['114'].isSuccess}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在外担任高管信息</text>
+                </view>
+            </view>
+        </view>
+  </block>
+
+<!-- 商业利益冲突(算话的一个接口) -->
+  <block wx:if="{{report.detail['136'] != null && report.detail['136'] !='' }}">
+        <block wx:for="{{report.detail['136'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['136'].isSuccess}}">
+       <!-- 企业法人信息 -->  
+          <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.legal ? 'kind-list__item-hd_show' : ''}}"
+              data-id='legal' wx:if="{{itemData.itemPropName == 'frList'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/legal.png'></image>
+                <text>企业法人信息</text>
+            </view>
+            <image class="icon-up {{ arrow.legal ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.legal ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'frList'}}">
+            <view class="weui-cells {{arrow.legal  ? '' : 'weui-cells_show'}}">
+                  <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.itemPropValue == null || itemData.itemPropValue.length == 0}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关企业法人信息</text>
+                </view>
+            </view>
+        </view>
+
+        <!-- 股东信息 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.gudong ? 'kind-list__item-hd_show' : ''}}"
+              data-id='gudong' wx:if="{{itemData.itemPropName == 'shareholderInfo'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/enterprise_investment.png'></image>
+                <text>股东信息</text>
+            </view>
+            <image class="icon-up {{ arrow.gudong ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.gudong ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'shareholderInfo'}}">
+            <view class="weui-cells {{arrow.gudong  ? '' : 'weui-cells_show'}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.itemPropValue == null || itemData.itemPropValue.length == 0}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在股东信息</text>
+                </view>
+            </view>
+        </view>
+        
+
+         <!-- 企业高管信息 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.gaoguan ? 'kind-list__item-hd_show' : ''}}"
+              data-id='gaoguan' wx:if="{{itemData.itemPropName == 'managementInfo'}}">
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/job_experience.png'></image>
+                <text>企业高管信息</text>
+            </view>
+            <image class="icon-up {{ arrow.gaoguan ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.gaoguan ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}" wx:if="{{itemData.itemPropName == 'managementInfo'}}">
+            <view class="weui-cells {{arrow.gaoguan  ? '' : 'weui-cells_show'}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                </block>
+                <view class='report-context' wx:if="{{itemData.itemPropValue == null || itemData.itemPropValue.length == 0}}">
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关企业高管信息</text>
+                </view>
+            </view>
+        </view>
+      </block>
+
+      
+<block wx:if="{{!report.detail['136'].isSuccess}}">
+       <!-- 在外担任法人 -->  
+          <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.legal ? 'kind-list__item-hd_show' : ''}}"
+              data-id='legal'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/legal.png'></image>
+                <text>在外担任法人</text>
+            </view>
+            <image class="icon-up {{ arrow.legal ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.legal ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.legal  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在外担任法人信息</text>
+                </view>
+            </view>
+        </view>
+
+        <!-- 在外担任股东 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.gudong ? 'kind-list__item-hd_show' : ''}}"
+              data-id='gudong'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/enterprise_investment.png'></image>
+                <text>在外担任股东</text>
+            </view>
+            <image class="icon-up {{ arrow.gudong ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.gudong ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.gudong  ? '' : 'weui-cells_show'}}">
+                   
+                <view class='report-context'>
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在外担任股东信息</text>
+                </view>
+            </view>
+        </view>
+        
+
+         <!-- 在外担任高管 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.gaoguan ? 'kind-list__item-hd_show' : ''}}"
+              data-id='gaoguan' >
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/job_experience.png'></image>
+                <text>在外担任高管</text>
+            </view>
+            <image class="icon-up {{ arrow.gaoguan ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.gaoguan ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.gaoguan  ? '' : 'weui-cells_show'}}">
+                <view class='report-context'>
+                <text class='text-gary1'>根据已提供的查询条件，未能查得相关在外担任高管信息</text>
+                </view>
+            </view>
+        </view>
+</block>
+  </block>
+
+
+
+  <!-- 犯罪嫌疑人 -->    
+    <block wx:if="{{report.detail['132'] != null && report.detail['132'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fanzuijilu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='fanzuijilu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fanzuijilu.png'></image>
+                <text>犯罪嫌疑人</text>
+            </view>
+            <image class="icon-up {{ arrow.fanzuijilu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.fanzuijilu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.fanzuijilu  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['132'].isSuccess && report.detail['132'].itemData[0].itemPropValue == 1}}">
+                    <view class='tabCol'>比对结果</view>
+                    <view class='conCol'>命中</view>
+                </view>
+                 <view class='report-context' wx:if="{{!report.detail['132'].isSuccess || report.detail['132'].itemData[0].itemPropValue != 1}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关犯罪嫌疑人</text> 
+                </view>
+            </view>
+        </view>
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.xidu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='xidu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/xidu.png'></image>
+                <text>吸毒记录</text>
+            </view>
+            <image class="icon-up {{ arrow.xidu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.xidu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.xidu  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['132'].isSuccess && report.detail['132'].itemData[0].itemPropValue == 2}}">
+                    <view class='tabCol'>比对结果</view>
+                    <view class='conCol'>命中</view>
+                </view>
+                 <view class='report-context' wx:if="{{!report.detail['132'].isSuccess || report.detail['132'].itemData[0].itemPropValue != 2}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关吸毒记录</text> 
+                </view>
+            </view>
+        </view>
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.qianke ? 'kind-list__item-hd_show' : ''}}"
+              data-id='qianke'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/qianke.png'></image>
+                <text>前科记录</text>
+            </view>
+            <image class="icon-up {{ arrow.qianke ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.qianke ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.qianke  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['132'].isSuccess && report.detail['132'].itemData[0].itemPropValue == 3}}">
+                    <view class='tabCol'>比对结果</view>
+                    <view class='conCol'>命中</view>
+                </view>
+                 <view class='report-context' wx:if="{{!report.detail['132'].isSuccess || report.detail['132'].itemData[0].itemPropValue != 3}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关前科记录</text> 
+                </view>
+            </view>
+        </view>
+
+
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.shean ? 'kind-list__item-hd_show' : ''}}"
+              data-id='shean'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shean.png'></image>
+                <text>涉案记录</text>
+            </view>
+            <image class="icon-up {{ arrow.shean ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.shean ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.shean  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['132'].isSuccess && report.detail['132'].itemData[0].itemPropValue == 4}}">
+                    <view class='tabCol'>比对结果</view>
+                    <view class='conCol'>命中</view>
+                </view>
+                 <view class='report-context' wx:if="{{!report.detail['132'].isSuccess || report.detail['132'].itemData[0].itemPropValue != 4}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关吸毒记录</text> 
+                </view>
+            </view>
+        </view>
+
+         <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.shixi ? 'kind-list__item-hd_show' : ''}}"
+              data-id='shixi'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/shixinbeizhixing.png'></image>
+                <text>失信记录</text>
+            </view>
+            <image class="icon-up {{ arrow.shixi ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.shixi ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.shixi  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['132'].isSuccess && report.detail['132'].itemData[0].itemPropValue == 5}}">
+                    <view class='tabCol'>比对结果</view>
+                    <view class='conCol'>命中</view>
+                </view>
+                 <view class='report-context' wx:if="{{!report.detail['132'].isSuccess || report.detail['132'].itemData[0].itemPropValue != 5}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关失信记录</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 犯罪嫌疑人 -->
+    <block wx:if="{{report.detail['206'] != null && report.detail['206'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fanzuijilu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='fanzuijilu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fanzuijilu.png'></image>
+                <text>犯罪嫌疑人</text>
+            </view>
+            <image class="icon-up {{ arrow.fanzuijilu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.fanzuijilu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.fanzuijilu  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['206'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['206'].isSuccess}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>犯罪时间</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['206'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关犯罪嫌疑人信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+     <!-- 在逃记录 -->
+    <block wx:if="{{report.detail['207'] != null && report.detail['207'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zaitao ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zaitao'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zaitao.png'></image>
+                <text>在逃记录</text>
+            </view>
+            <image class="icon-up {{ arrow.zaitao ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.zaitao ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.zaitao  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['207'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['207'].isSuccess}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>犯罪时间</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['207'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关在逃记录信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+    
+    <!-- 涉毒记录 -->
+    <block wx:if="{{report.detail['208'] != null && report.detail['208'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.sedu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='sedu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/sedu.png'></image>
+                <text>涉毒记录</text>
+            </view>
+            <image class="icon-up {{ arrow.sedu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.sedu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.sedu  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['208'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['208'].isSuccess}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>犯罪时间</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['208'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关涉毒记录信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 吸毒记录 -->
+    <block wx:if="{{report.detail['209'] != null && report.detail['209'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.xidu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='xidu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/xidu.png'></image>
+                <text>吸毒记录</text>
+            </view>
+            <image class="icon-up {{ arrow.xidu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.xidu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.xidu  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['209'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['209'].isSuccess}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>犯罪时间</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['209'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关吸毒记录信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+<!-- 刑事记录 -->
+    <block wx:if="{{report.detail['210'] != null && report.detail['210'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.xingshi ? 'kind-list__item-hd_show' : ''}}"
+              data-id='xingshi'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/xingshi.png'></image>
+                <text>刑事记录</text>
+            </view>
+            <image class="icon-up {{ arrow.xingshi ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.xingshi ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.xingshi  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['210'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['210'].isSuccess}}">
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>犯罪时间</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['210'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关刑事记录信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+<!-- 前科记录 -->
+    <block wx:if="{{report.detail['205'] != null && report.detail['205'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.qianke ? 'kind-list__item-hd_show' : ''}}"
+              data-id='qianke'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/qianke.png'></image>
+                <text>前科记录</text>
+            </view>
+            <image class="icon-up {{ arrow.qianke ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.qianke ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+           <view class="weui-cells {{arrow.xidu  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['205'].isSuccess && report.detail['205'].itemData[0].itemPropValue =='前科'}}">
+                            <view class='tabCol'>比对结果</view>
+                            <view class='conCol'>{{report.detail['205'].itemData[0].itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['205'].isSuccess || report.detail['205'].itemData[0].itemPropValue != '前科'}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关前科记录</text> 
+                </view>
+            </view>
+        </view>
+
+        <!-- 吸毒记录 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.xidu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='xidu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/xidu.png'></image>
+                <text>吸毒记录</text>
+            </view>
+            <image class="icon-up {{ arrow.xidu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.xidu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.xidu  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['205'].isSuccess && report.detail['205'].itemData[0].itemPropValue =='吸毒'}}">
+                            <view class='tabCol'>比对结果</view>
+                            <view class='conCol'>{{report.detail['205'].itemData[0].itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['205'].isSuccess || report.detail['205'].itemData[0].itemPropValue != '吸毒'}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关吸毒记录</text> 
+                </view>
+            </view>
+        </view>
+
+        <!-- 涉毒记录 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.sedu ? 'kind-list__item-hd_show' : ''}}"
+              data-id='sedu'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/sedu.png'></image>
+                <text>涉毒记录</text>
+            </view>
+            <image class="icon-up {{ arrow.sedu ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.sedu ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.sedu  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['205'].isSuccess && report.detail['205'].itemData[0].itemPropValue =='涉毒'}}">
+                            <view class='tabCol'>比对结果</view>
+                            <view class='conCol'>{{report.detail['205'].itemData[0].itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['205'].isSuccess || report.detail['205'].itemData[0].itemPropValue != '涉毒'}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关涉毒记录</text> 
+                </view>
+            </view>
+        </view>
+        
+        <!-- 在逃记录 -->
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.zaitao ? 'kind-list__item-hd_show' : ''}}"
+              data-id='zaitao'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/zaitao.png'></image>
+                <text>在逃记录</text>
+            </view>
+            <image class="icon-up {{ arrow.zaitao ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.zaitao ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.zaitao  ? '' : 'weui-cells_show'}}">
+                <view class='report-context' wx:if="{{report.detail['205'].isSuccess && report.detail['205'].itemData[0].itemPropValue =='在逃'}}">
+                            <view class='tabCol'>比对结果</view>
+                            <view class='conCol'>{{report.detail['205'].itemData[0].itemPropValue}}</view>
+                </view>
+                <view class='report-context' wx:if="{{!report.detail['205'].isSuccess || report.detail['205'].itemData[0].itemPropValue != '在逃'}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关在逃记录</text> 
+                </view>
+            </view>
+        </view>
+</block>
+
+
+    <!-- 社会风险信息详情 -->
+    <block wx:if="{{report.detail['137'] != null && report.detail['137'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.bljl ? 'kind-list__item-hd_show' : ''}}"
+              data-id='bljl'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/bljl.png'></image>
+                <text>社会风险信息详情</text>
+            </view>
+            <image class="icon-up {{ arrow.bljl ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.bljl ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.bljl  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['137'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['137'].isSuccess}}">
+                     <view class='report-context' wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                            <text class='text-gary1'>     {{itemData.itemPropLabel}}</text> 
+                      </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['137'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关社会风险信息详情信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+    <!-- 社会风险信息详情 -->
+    <block wx:if="{{report.detail['117'] != null && report.detail['117'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fengxianqingdan ? 'kind-list__item-hd_show' : ''}}"
+              data-id='fengxianqingdan'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fengxianqingdan.png'></image>
+                <text>风险清单</text>
+            </view>
+            <image class="icon-up {{ arrow.fengxianqingdan ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.fengxianqingdan ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.fengxianqingdan  ? '' : 'weui-cells_show'}}">
+                 <block wx:for="{{report.detail['117'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['117'].isSuccess}}">
+                     <view class='report-context' wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                            <text class='text-gary1'>{{itemData.itemPropLabel}}</text> 
+                      </view>
+                      <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null && detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                      </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['117'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关风险清单信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 反欺诈验证 -->
+    <block wx:if="{{report.detail['201'] != null && report.detail['201'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.qizaxingxi ? 'kind-list__item-hd_show' : ''}}"
+              data-id='qizaxingxi'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/qizaxingxi.png'></image>
+                <text>反欺诈验证</text>
+            </view>
+            <image class="icon-up {{ arrow.qizaxingxi ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.qizaxingxi ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.qizaxingxi  ? '' : 'weui-cells_show'}}">
+               <view class='report-context' wx:for="{{report.detail['201'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['201'].isSuccess}}">
+                            <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                            <view class='conCol' wx:if="{{itemData.set != true}}">{{itemData.itemPropValue}}</view>  
+                            <view class='conCol'>
+                                 <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true && detail.itemPropName == 'ivsDetailDesc'}}">
+                                      {{detail.itemPropValue}}；
+                                 </block> 
+                            </view>                            
+                 </view>
+                <view class='report-context' wx:if="{{!report.detail['201'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关反欺诈验证信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+        <!-- 反欺诈验证 -->
+    <block wx:if="{{report.detail['202'] != null && report.detail['202'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.fanqizaxingxiyanzhe ? 'kind-list__item-hd_show' : ''}}"
+              data-id='fanqizaxingxiyanzhe'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/fanqizaxingxiyanzhe.png'></image>
+                <text>欺诈验证</text>
+            </view>
+            <image class="icon-up {{ arrow.fanqizaxingxiyanzhe ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.fanqizaxingxiyanzhe ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.fanqizaxingxiyanzhe  ? '' : 'weui-cells_show'}}">
+               <view class='report-context' wx:for="{{report.detail['202'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['202'].isSuccess}}">
+                            <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                            <view class='conCol' wx:if="{{itemData.set != true}}">{{itemData.itemPropValue}}</view>  
+                             <view class='conCol' wx:if="{{itemData.set == true}}">
+                                   <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                                      {{detail.itemPropValue}}；
+                                    </block> 
+                            </view>    
+                                                
+                 </view>
+                <view class='report-context' wx:if="{{!report.detail['202'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关欺诈验证信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+<!-- 欺诈关注清单 -->
+    <block wx:if="{{report.detail['203'] != null && report.detail['203'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.qizaxingxiqingdan ? 'kind-list__item-hd_show' : ''}}"
+              data-id='qizaxingxiqingdan'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/qizaxingxiqingdan.png'></image>
+                <text>欺诈关注清单</text>
+            </view>
+            <image class="icon-up {{ arrow.qizaxingxiqingdan ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.qizaxingxiqingdan ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.qizaxingxiqingdan  ? '' : 'weui-cells_show'}}">
+               <view class='report-context' wx:for="{{report.detail['203'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['203'].isSuccess}}">
+                            <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                            <view class='conCol' wx:if="{{itemData.set != true}}">{{itemData.itemPropValue}}</view>  
+                            <view class='conCol' wx:if="{{itemData.set == true}}">
+                                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{itemData.set == true}}">
+                                      {{detail.itemPropValue}}；
+                                </block> 
+                            </view>                            
+                 </view>
+                <view class='report-context' wx:if="{{!report.detail['203'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关欺诈验证信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+<!-- 申请欺诈评分 -->
+<block wx:if="{{report.detail['204'] != null && report.detail['204'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.qizhapingfen ? 'kind-list__item-hd_show' : ''}}"
+              data-id='qizhapingfen'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/qizhapingfen.png'></image>
+                <text>申请欺诈评分</text>
+            </view>
+            <image class="icon-up {{ arrow.qizhapingfen ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.qizhapingfen ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.qizhapingfen  ? '' : 'weui-cells_show'}}">
+               <view class='report-context' wx:for="{{report.detail['204'].itemData}}" wx:for-item="itemData" wx:if="{{report.detail['204'].isSuccess}}">
+                            <view class='tabCol'>{{itemData.itemPropLabel}}</view>
+                            <view class='conCol' wx:if="{{itemData.set != true}}">{{itemData.itemPropValue}}</view>  
+                            <view class='conCol' wx:if="{{itemData.set == true}}">
+                                <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:if="{{detail.itemPropName == 'antifraudDetailDesc'}}">
+                                     {{detail.itemPropValue}}； \r\t\r\t\r\t\r\t\r\t\r\t\r
+                                </block> 
+                            </view>                            
+                 </view>
+                <view class='report-context' wx:if="{{!report.detail['204'].isSuccess}}">
+                     <text class='text-gary1'>根据已提供的查询条件，未能查得相关申请欺诈评分信息</text> 
+                </view>
+            </view>
+        </view>
+    </block>
+
+<!-- 航旅记录 -->
+    <block wx:if="{{report.detail['108'] != null && report.detail['108'] !=''}}">
+        <view bindtap='upArrow' class=" report-input-item-titile {{ arrow.hanglvxinxi ? 'kind-list__item-hd_show' : ''}}"
+              data-id='hanglvxinxi'>
+            <view class='report-titile'>
+                <image class='icon' src='https://m.zmbeidiao.com/img/hanglvxinxi.png'></image>
+                <text>航旅记录</text>
+            </view>
+            <image class="icon-up {{ arrow.hanglvxinxi ? 'icon-down' : ''}}"
+                   src='https://m.zmbeidiao.com/img/up-arrow.png'></image>
+        </view>
+        <view class="  {{arrow.hanglvxinxi ? 'kind-list__item-bd' : 'kind-list__item-bd_show'}}">
+            <view class="weui-cells {{arrow.hanglvxinxi  ? '' : 'weui-cells_show'}}">
+                <block wx:for="{{report.detail['108'].itemData}}" wx:for-item="itemData"
+                       wx:if="{{report.detail['108'].isSuccess}}">
+                    <view class='report-context'
+                          wx:if="{{itemData.itemPropLabel!=null && itemData.itemPropLabel !=''}}">
+                        <text class='text-gary1'>{{itemData.itemPropLabel}}</text>
+                    </view>
+                    <block wx:for="{{itemData.itemPropValue}}" wx:for-item="detail" wx:for-index="idx"
+                           wx:if="{{itemData.set == true}}">
+                        <view class='trigon-view'>
+                            <view class='trigon text-size-14'>第{{idx+1}}条</view>
+                        </view>
+                        <view class='report-context' wx:for="{{detail}}" wx:for-item="detailInfo">
+                            <view class='tabCol'>{{detailInfo.itemPropLabel}}</view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue != null && detailInfo.itemPropValue != ''}}">
+                                {{detailInfo.itemPropValue}}
+                            </view>
+                            <view class='conCol'
+                                  wx:if="{{detailInfo.itemPropValue == null || detailInfo.itemPropValue == ''}}">
+                                -
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view class='report-context' wx:if="{{!report.detail['108'].isSuccess}}">
+                    <text class='text-gary1'>根据已提供的查询条件，未能查得相关航旅记录信息</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+

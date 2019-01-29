@@ -1,0 +1,113 @@
+<import src="../../components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+<form bindsubmit="submitForm">
+<view style=' display: flex;flex-direction: column; align-items: center;'>
+  <view class='tab-view'>
+    <text class='{{certification == 0 ? "tab-text-yellow":"tab-text" }}' bindtap='certification' data-id='0'>营业执照号认证</text>
+    <text class='{{certification == 1 ? "tab-text-yellow":"tab-text" }}' bindtap='certification' data-id='1' >企业信用代码认证</text>
+    <text class='{{certification == 2 ? "tab-text-yellow":"tab-text" }}' bindtap='certification' data-id='2'>非盈利组织认证</text>
+  </view>
+
+<block wx:if='{{certification == 0}}'>
+  <view class='input-view'> 
+      <text  style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业名称\r\t:</text>
+      <input name = "orgName"class='input' maxlength="20" placeholder="请输入您的企业名称" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+  <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>组织机构代码\r\t:</text>
+      <input name = "orgCode" class='input' maxlength="24" placeholder="请输入您的组织机构代码" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+  <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>营业执照注册号\r\t:</text>
+      <input name = "orgBusiLic" class='input' maxlength="24" placeholder="请输入您的营业执照注册号" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+    <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业联系人姓名\r\t:</text>
+      <input name = "orgLinkman" class='input' maxlength="24" placeholder="请输入您的企业联系人姓名" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+
+    <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业地址\r\t:</text>
+      <input name = "orgBusiAddr" class='input' maxlength="24" placeholder="请输入您的企业地址" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+
+    <view class="image-view" style='margin-top:35rpx;'>
+        <view class="image-view-text">
+            <text class=' text-size-12 text-gary padding'>营业执照</text>
+            <text class=' text-size-12 text-yellow padding' bindtap='a'>示例</text>
+        </view>
+        <view class='{{zheng?"image-select":"image-select-hava"}}' bindtap="chooseimagezheng">
+              <image wx:if="{{tempFilePathsZheng!='' && tempFilePathsZheng!=null}}" src="{{tempFilePathsZheng }}" mode="aspecFill" style="width: 330rpx; height:225px "/>  
+              <view class='{{zheng?"text-padding-hava":"text-padding"}}'>(请保证图片清晰可见)</view>  
+        </view>
+    </view>
+ </block>
+
+<block wx:if='{{certification == 1}}'>
+  <view class='input-view'> 
+      <text  style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业名称\r\t:</text>
+      <input name = "orgName"class='input' maxlength="20" placeholder="请输入您的企业名称" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+  <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>社会信用代码\r\t:</text>
+      <input name = "socialCreditCode" class='input' maxlength="24" placeholder="18位数字或字母" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+    <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业联系人姓名\r\t:</text>
+      <input name = "orgLinkman" class='input' maxlength="24" placeholder="请输入您的企业联系人姓名" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+
+    <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业地址\r\t:</text>
+      <input name = "orgBusiAddr" class='input' maxlength="24" placeholder="请输入您的企业地址" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+
+    <view class="image-view" style='margin-top:35rpx;'>
+        <view class="image-view-text">
+            <text class=' text-size-12 text-gary padding'>营业执照</text>
+            <text class=' text-size-12 text-yellow padding' bindtap='a'>示例</text>
+        </view>
+        <view class='{{zheng?"image-select":"image-select-hava"}}' bindtap="chooseimagezheng">
+              <image wx:if="{{tempFilePathsZheng!='' && tempFilePathsZheng!=null}}" src="{{tempFilePathsZheng }}" mode="aspecFill" style="width: 330rpx; height:225px "/>  
+              <view class='{{zheng?"text-padding-hava":"text-padding"}}'>(请保证图片清晰可见)</view>  
+        </view>
+    </view>
+ </block>
+
+
+<block wx:if='{{certification == 2}}'>
+ <view class='input-view'> 
+      <text  style='width:110px;margin-left:35rpx;' class='text-size-12 text-gary'>企业名称\r\t:</text>
+      <input name = "orgName"class='input' maxlength="20" placeholder="请输入您的企业名称" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+  <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>组织机构代码\r\t:</text>
+      <input name = "orgCode" class='input' maxlength="24" placeholder="请输入您的组织机构代码" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+  <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>营业执照注册号\r\t:</text>
+      <input name = "orgBusiLic" class='input' maxlength="24" placeholder="请输入您的营业执照注册号" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+    <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class='text-size-12 text-gary'>企业联系人姓名\r\t:</text>
+      <input name = "orgLinkman" class='input' maxlength="24" placeholder="请输入您的企业联系人姓名" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+
+    <view class='input-view'> 
+      <text style='width:110px;margin-left:35rpx;' class=' text-size-12 text-gary'>企业地址\r\t:</text>
+      <input name = "orgBusiAddr" class='input' maxlength="24" placeholder="请输入您的企业地址" placeholder-style="color: #8994A4;font-size: 12px;"  />
+    </view>
+ </block>
+
+  <button class='button'  formType="submit">完成</button>
+
+  <view class="b1" hidden="{{flag}}"> 
+   <view class="t_w"> 
+      <view style='background:#fff' class="b2"> 
+        <image  src='https://m.zmbeidiao.com/img/wxapplet/image_yingye.png'></image>
+      </view> 
+      <image bindtap='b'  class='image-finish' src='../../assets/images/delete_real.png'></image>
+   </view> 
+</view> 
+</view>
+</form>

@@ -1,0 +1,40 @@
+.list-view{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 1px solid #f1f1f1;
+  background: #fff;
+}
+
+.list-item{
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 100%
+}
+
+.text-margin{
+  margin-top: 10rpx;
+  margin-left: 35rpx;
+  margin-right: 35rpx;
+  margin-bottom: 10rpx;  
+}
+
+.transactions-success{
+   color: #8cc359;
+   font-size: 14px;
+   margin-top: 10rpx;
+   margin-left: 35rpx;
+   margin-right: 35rpx;
+   animation-name: 10rpx;  
+}
+
+
+.transactions-error{
+   color: #ff5825;
+   font-size: 14px;
+   margin-top: 10rpx;
+   margin-left: 35rpx;
+   margin-right: 35rpx;
+   animation-name: 10rpx;  
+}

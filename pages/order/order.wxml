@@ -1,0 +1,82 @@
+<import src="../../components/toptips/toptips.wxml" /><template is="toptips"
+data="{{ ...$wux.toptips }}" />
+
+
+<view>
+<view class="basis-view">
+    <image class="icon-image" src="../../assets/images/icon_prompt.png"></image>
+    <text class="text-size-14 text-gary">基础信息</text>
+</view>
+
+<!-- <view class="basis-item" style='justify-content:space-between;'>
+    <text class="text-size-16 text-gary">{{tplList.inputs[0].value}}</text>
+    <text class="text-size-12 text-gary">预计查询时间：5分钟</text>
+</view> -->
+<block wx:for="{{tplList.inputs}}" wx:for-index="idx" wx:for-item="input" >
+    <view class="basis-item">
+        <text class="text-size-14 text-gary text-margin-right">{{input.ioName}}</text>
+        <text class="text-size-14 text-gary">{{input.value}}</text>
+    </view>
+</block>
+<view class="basis-view">
+    <image class="icon-image" src="../../assets/images/icon_prompt.png"></image>
+    <text class="text-size-14 text-gary">查询内容</text>
+</view>
+
+<view class='select-context'>
+
+    <block
+        wx:if="{{tplList.displayMode != null && tplList.displayMode != '' && tplList.displayMode == '1'}}">
+        <block wx:if="{{tplList.childrenTemplate == null || tplList.childrenTemplate == ''}}">
+            <block wx:for="{{tplList.items}}" wx:for-item="itemtext">
+                <text class='text-item'>{{itemtext}}</text>
+            </block>
+        </block>
+        <block wx:else>
+            <block>
+                <text class='text-item'>{{tplList.childrenTemplate}}+</text>
+            </block>
+            <block wx:for="{{tplList.items}}" wx:for-item="itemtext">
+                <text class='text-item'>{{itemtext}}</text>
+            </block>
+        </block>
+    </block>
+    <block wx:else>
+        <block wx:if="{{tplList.childrenTemplate == null || tplList.childrenTemplate == ''}}">
+            <block wx:for="{{tplList.items}}" wx:for-item="itemtext">
+                <text class='text-item'>{{itemtext.itemName}}</text>
+            </block>
+        </block>
+        <block wx:else>
+            <block>
+                <text class='text-item'>{{tplList.childrenTemplate}}+</text>
+            </block>
+            <block wx:for="{{tplList.items}}" wx:for-item="itemtext">
+                <text class='text-item'>{{itemtext.itemName}}</text>
+            </block>
+        </block>
+    </block>
+</view>
+
+<view class="basis-view">
+    <image class="icon-image" src="../../assets/images/icon_prompt.png"></image>
+    <text class="text-size-14 text-gary">费用明细</text>
+</view>
+
+<view class="basis-item" style='justify-content:space-between;'>
+    <text class="text-size-14 text-gary">报告费用</text>
+    <text class="text-size-14 text-red">￥{{tplList.chargeAmt}}</text>
+</view>
+
+<view wx:if="{{credit == 1 }}" class="basis-view" style='justify-content:center;'>
+    <text class="text-size-12 text-gary">请确认以上信息无误后，发送短息及邮件通知候选人完成授权</text>
+</view>
+<view  wx:if="{{credit == 1 }}" class='button-view'>
+    <button class="login-button" bindtap='sendAuthorized'>信息确认无误，发送授权链接</button>
+</view>
+
+<view wx:if="{{credit == 2 }}" class='button-view'>
+    <button class="login-button" bindtap='sendAuthorized'>信息确认无误，立即查询</button>
+</view>
+
+</view>

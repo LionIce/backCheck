@@ -1,0 +1,74 @@
+ {
+  "pages":[
+        "pages/report/report",
+    "pages/find/find",
+
+    "pages/login/login",
+    "pages/my/my",
+    "pages/logs/logs",
+    "pages/quicklogin/quicklogin",
+    "pages/register/register",
+    "pages/agreement/agreement",
+    "pages/forgetpwd/forgetpwd",
+    "pages/setting/setting",
+    "pages/quickselect/quickselect",
+    "pages/order/order",
+    "pages/authorized/authorized",
+    "pages/reportdetail/reportdetail",
+    "pages/samplereport/samplereport",
+    "pages/accountbalance/accountbalance",
+    "pages/recharge/recharge",
+    "pages/certification/certification",
+    "pages/personalcer/personalcer",
+    "pages/successcer/successcer",
+    "pages/enterprise/enterprise",
+    "pages/transactions/transactions",
+    "pages/changemobile/changemobile",
+    "pages/updatapwd/updatapwd",
+    "pages/message/message",
+    "pages/rechargelist/rechargelist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#435879",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "芝麻背调",
+    "enablePullDownRefresh" : "ture",
+    "backgroundColor": "#435879"
+  },
+  "tabBar": {
+    "color": "#C4C5C6",
+    "selectedColor": "#435879",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/find/find",
+        "iconPath": "assets/images/icon_search.png",
+        "selectedIconPath": "assets/images/icon_search_checked.png",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/report/report",
+        "iconPath": "assets/images/icon_report.png",
+        "selectedIconPath": "assets/images/icon_report_checked.png",
+        "text": "报告"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "assets/images/icon_me.png",
+        "selectedIconPath": "assets/images/icon_me_checked.png",
+        "text": "我的"
+      }
+    ]
+  }
+  ,
+  "debug" : true,
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 5000,
+    "uploadFile": 5000,
+    "downloadFile": 5000
+  }
+}

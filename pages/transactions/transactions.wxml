@@ -1,0 +1,18 @@
+<!--logs.wxml-->
+<view style='padding-top:35rpx; padding-bottom:35rpx;'>
+  <view class='list-view' wx:for="{{items}}" wx:for-item="item">
+        <view class='list-item'>
+          <text class='text-size-14 text-gary text-margin'>{{item.transRemark}}</text>
+          <text class='text-size-14 text-gary text-margin'>{{item.transAmt}}</text> 
+        </view>
+        <view class='list-item'>
+          <text class='text-size-14 text-gary text-margin'>{{item.transCreateTime}}</text>
+          <text class='{{item.transStatus==1?"transactions-success":"transactions-error"}}'>{{item.transStatus==1?"交易成功":"交易失败"}}</text> 
+        </view>
+    </view>
+  <view  wx:if="{{hidden}}" class="{{hidden ? 'empty-view-show' : 'empty-view-hidden'}}" bindtap='onclickempty'>
+        <image  class = "message-empty" src='../../assets/images/message_empty.png'></image>
+        <text class='text-size-16 text-gary1' style='margin-top:25rpx'>暂无数据</text>
+        <text class='text-size-14 text-blue' style='margin-top:10rpx;'>点击屏幕重新尝试</text>
+  </view>
+</view>
